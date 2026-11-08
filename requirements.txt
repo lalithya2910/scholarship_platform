@@ -3,4 +3,5 @@ Flask
 mysql-connector-python
 python-dotenv
 Werkzeug
+cloudinary
 

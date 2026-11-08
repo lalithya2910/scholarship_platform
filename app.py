@@ -1,26 +1,60 @@
+import os
+import time
+from pathlib import Path
+from uuid import uuid4
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.utils
 from flask import (
     Flask, render_template, request, redirect,
     url_for, flash, session, send_file, abort
 )
-from pathlib import Path
-from uuid import uuid4
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from database import get_db_connection
 from mail import generate_otp, send_email
-from datetime import datetime, timedelta,date
-import time
-app = Flask(__name__)
-app.secret_key = "scholarship_secret_key"
+from datetime import datetime, timedelta, date
 
-# Upload folder configuration
+app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "scholarship_secret_key")
+
+# Localhost stores documents in this folder. Vercel uses Cloudinary.
+IS_VERCEL = os.getenv("VERCEL", "").lower() == "1"
 UPLOAD_FOLDER = Path(app.root_path) / "scholarship_documents"
-UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
+if not IS_VERCEL:
+    UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {"pdf", "jpg", "jpeg", "png"}
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
-  # Change this to a secure random key in production
+
+# Configure Cloudinary only for the Vercel deployment.
+if IS_VERCEL:
+    cloudinary.config(
+        cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+        api_key=os.getenv("CLOUDINARY_API_KEY"),
+        api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+        secure=True
+    )
+
+def cleanup_uploaded_documents(local_files, cloudinary_public_ids):
+    """Remove uploaded files if the database transaction fails."""
+    for file_path in local_files:
+        try:
+            file_path.unlink(missing_ok=True)
+        except OSError:
+            app.logger.exception("Could not remove uploaded local document")
+
+    for public_id in cloudinary_public_ids:
+        try:
+            cloudinary.uploader.destroy(
+                public_id,
+                resource_type="image",
+                type="authenticated"
+            )
+        except Exception:
+            app.logger.exception("Could not remove uploaded Cloudinary document")
 
 @app.route("/")
 def index():
@@ -588,6 +622,7 @@ def apply_scholarship(scholarship_id):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     saved_files = []
+    cloudinary_public_ids = []
     scholarship = None
     required_documents = []
 
@@ -810,21 +845,46 @@ def apply_scholarship(scholarship_id):
 
             application_id = cursor.lastrowid
 
-            # Save documents in the application folder
-            application_folder = UPLOAD_FOLDER / str(application_id)
-            application_folder.mkdir(
-                parents=True, exist_ok=True
-            )
+            # Store documents according to the running environment:
+            # Localhost -> local folder; Vercel -> authenticated Cloudinary.
+            if IS_VERCEL:
+                required_cloudinary_values = (
+                    os.getenv("CLOUDINARY_CLOUD_NAME"),
+                    os.getenv("CLOUDINARY_API_KEY"),
+                    os.getenv("CLOUDINARY_API_SECRET")
+                )
+                if not all(required_cloudinary_values):
+                    raise RuntimeError(
+                        "Cloudinary environment variables are missing in Vercel."
+                    )
+
+            else:
+                application_folder = UPLOAD_FOLDER / str(application_id)
+                application_folder.mkdir(parents=True, exist_ok=True)
 
             for document_type, original_name, uploaded_file, extension in uploaded_documents:
 
-                stored_name = f"{uuid4().hex}.{extension}"
-                disk_path = application_folder / stored_name
+                if IS_VERCEL:
+                    public_id = f"{uuid4().hex}"
+                    result = cloudinary.uploader.upload(
+                        uploaded_file,
+                        resource_type="image",
+                        type="authenticated",
+                        folder=f"scholarship_documents/{application_id}",
+                        public_id=public_id,
+                        overwrite=False
+                    )
+                    cloudinary_public_ids.append(result["public_id"])
+                    stored_reference = "cloudinary:" + result["public_id"]
 
-                uploaded_file.save(str(disk_path))
-                saved_files.append(disk_path)
+                else:
+                    stored_name = f"{uuid4().hex}.{extension}"
+                    disk_path = application_folder / stored_name
+                    uploaded_file.save(str(disk_path))
+                    saved_files.append(disk_path)
+                    stored_reference = str(disk_path.resolve())
 
-                # Save document information in database
+                # Store only the file reference in MySQL, not the file itself.
                 cursor.execute("""
                     INSERT INTO documents
                         (application_id, document_type, document_name,
@@ -834,7 +894,7 @@ def apply_scholarship(scholarship_id):
                     application_id,
                     document_type,
                     original_name,
-                    str(disk_path.resolve())
+                    stored_reference
                 ))
 
             conn.commit()
@@ -851,26 +911,14 @@ def apply_scholarship(scholarship_id):
     except ValueError as error:
         conn.rollback()
 
-        for path in saved_files:
-            try:
-                path.unlink(missing_ok=True)
-            except OSError:
-                app.logger.exception(
-                    'Could not remove uploaded file'
-                )
+        cleanup_uploaded_documents(saved_files, cloudinary_public_ids)
 
         flash(str(error), 'danger')
 
     except Exception:
         conn.rollback()
 
-        for path in saved_files:
-            try:
-                path.unlink(missing_ok=True)
-            except OSError:
-                app.logger.exception(
-                    'Could not remove uploaded file'
-                )
+        cleanup_uploaded_documents(saved_files, cloudinary_public_ids)
 
         app.logger.exception(
             'Scholarship application submission failed'
@@ -1743,7 +1791,7 @@ def application_review(application_id):
 @app.route('/view_document/<int:document_id>')
 def view_document(document_id):
 
-    # 1. Admin login check
+    # Only logged-in admins can view student documents.
     if 'admin_id' not in session:
         flash('Please login as admin first.', 'error')
         return redirect(url_for('admin_login'))
@@ -1752,40 +1800,61 @@ def view_document(document_id):
     cursor = conn.cursor(dictionary=True, buffered=True)
 
     try:
-        # 2. Fetch document details and status
         cursor.execute("""
             SELECT document_id, application_id,
-                   file_path, document_name,
-                   verification_status
+                   file_path, document_name, verification_status
             FROM documents
             WHERE document_id = %s
         """, (document_id,))
 
         document = cursor.fetchone()
-
         if not document:
             abort(404)
 
-        # 3. Get actual file path
-        file_path = Path(document['file_path']).resolve()
+        stored_reference = document['file_path'] or ''
 
-        upload_folder = (
-            Path(app.root_path) / 'scholarship_documents'
-        ).resolve()
+        # Cloudinary document (Vercel deployment).
+        if stored_reference.startswith('cloudinary:'):
+            public_id = stored_reference.replace('cloudinary:', '', 1)
+            extension = Path(document['document_name']).suffix.lower().lstrip('.')
 
-        # 4. Restrict access to uploaded document folder
-        if not file_path.is_relative_to(upload_folder):
-            abort(403)
+            if extension not in ALLOWED_EXTENSIONS:
+                abort(400)
 
-        # 5. Check file existence
-        if not file_path.is_file():
-            abort(404)
+            if not all((
+                os.getenv("CLOUDINARY_CLOUD_NAME"),
+                os.getenv("CLOUDINARY_API_KEY"),
+                os.getenv("CLOUDINARY_API_SECRET")
+            )):
+                app.logger.error("Cloudinary environment variables are missing.")
+                abort(500)
 
-        # 6. Automatically update Pending to Verified
-        # Do not overwrite an existing Rejected status
+            # Create a short-lived signed URL for the private document.
+            document_url = cloudinary.utils.private_download_url(
+                public_id,
+                extension,
+                resource_type="image",
+                type="authenticated",
+                expires_at=int(time.time()) + 300,
+                attachment=False
+            )
+
+        else:
+            # Local documents are available only when running on localhost.
+            if IS_VERCEL:
+                abort(404)
+
+            file_path = Path(stored_reference).resolve()
+            upload_folder = (Path(app.root_path) / 'scholarship_documents').resolve()
+
+            if not file_path.is_relative_to(upload_folder):
+                abort(403)
+            if not file_path.is_file():
+                abort(404)
+
+        # Opening a Pending document marks it Verified only while the
+        # related application is still Pending. Rejected status is preserved.
         if document['verification_status'] == 'Pending':
-
-            # Verify the related application is still Pending
             cursor.execute("""
                 SELECT status
                 FROM applications
@@ -1793,37 +1862,33 @@ def view_document(document_id):
             """, (document['application_id'],))
 
             application_record = cursor.fetchone()
-
-            if (
-                application_record
-                and application_record['status'] == 'Pending'
-            ):
+            if application_record and application_record['status'] == 'Pending':
                 cursor.execute("""
                     UPDATE documents
                     SET verification_status = 'Verified'
                     WHERE document_id = %s
                       AND verification_status = 'Pending'
                 """, (document_id,))
-
                 conn.commit()
 
-        # 7. Send document to admin
+        if stored_reference.startswith('cloudinary:'):
+            return redirect(document_url)
+
         return send_file(
             file_path,
             as_attachment=False,
-            download_name=Path(
-                document['document_name']
-            ).name
+            download_name=Path(document['document_name']).name
         )
 
-    except Exception as e:
+    except Exception as error:
         conn.rollback()
-        print('View Document Error:', e)
+        app.logger.exception('View Document Error: %s', error)
         raise
 
     finally:
         cursor.close()
         conn.close()
+
 
 @app.route('/delete_scholarship/<int:scholarship_id>', methods=['POST'])
 def delete_scholarship(scholarship_id):
