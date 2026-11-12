@@ -5,9 +5,16 @@
 
 {% block content %}
 
+
 <!-- HERO SECTION -->
-<section class="bg-primary bg-gradient text-white py-5">
+<section class="text-white py-5"
+         style="background: linear-gradient(110deg, #0250c5 0%, #7651ad 50%, #bd4e9c 100%);">
+
     <div class="container py-5 text-center">
+
+        <span class="badge bg-light text-primary rounded-pill px-3 py-2 mb-3">
+            Welcome to Scholarship Portal
+        </span>
 
         {% if session.get('student_id') %}
 
@@ -22,13 +29,11 @@
 
             <a href="{{ url_for('scholarships') }}"
                class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">
-                <i class="bi bi-mortarboard me-2"></i>
                 Explore Scholarships
             </a>
 
             <a href="{{ url_for('application_status') }}"
                class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">
-                <i class="bi bi-file-earmark-text me-2"></i>
                 My Applications
             </a>
 
@@ -45,7 +50,6 @@
 
             <a href="{{ url_for('admin_dashboard') }}"
                class="btn btn-light btn-lg fw-bold rounded-pill px-4">
-                <i class="bi bi-speedometer2 me-2"></i>
                 Go to Dashboard
             </a>
 
@@ -62,13 +66,11 @@
 
             <a href="{{ url_for('register') }}"
                class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">
-                <i class="bi bi-person-plus me-2"></i>
                 Get Started
             </a>
 
             <a href="{{ url_for('scholarships') }}"
                class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">
-                <i class="bi bi-search me-2"></i>
                 Explore Scholarships
             </a>
 
