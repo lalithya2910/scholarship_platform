@@ -85,33 +85,55 @@
 /* =========================================
    5. WELCOME TEXT
 ========================================= */
+.auth-welcome {
+    position: relative;
+    overflow: hidden;
+    min-height: 780px;
+    padding: 45px;
+}
+
+.auth-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.auth-welcome-content {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-height: 680px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 
 .auth-welcome-text {
-    max-width: 680px;
+    max-width: 600px;
     margin-top: 40px;
 }
 
 .auth-welcome h1 {
     font-size: clamp(36px, 4vw, 58px);
-
-    font-weight: 100;
     line-height: 1.15;
-
-    color: #ffffff;
-
-    margin-bottom: 25px;
+    font-weight: 600;
+    color: white;
 }
 
 .auth-welcome p {
-    max-width: 580px;
-
     font-size: 18px;
-    line-height: 1.8;
-
-    color: #ffffff;
-
-    margin-bottom: 25px;
+    line-height: 1.7;
+    color: white;
 }
+
+
 
 /* =========================================
    6. FEATURES
