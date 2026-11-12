@@ -1857,27 +1857,21 @@ input[type="file"].form-control {
     position: relative;
     width: 62%;
     min-height: 760px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 65px;
     overflow: hidden;
 
-    background-image:
-        linear-gradient(
-            135deg,
-            rgba(52, 86, 181, 0.72),
-            rgba(85, 80, 168, 0.62),
-            rgba(128, 80, 154, 0.58),
-            rgba(192, 77, 154, 0.65)
-        ),
-        url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=90");
+    background: linear-gradient(
+        135deg,
+        #3154B9 0%,
+        #514EAA 50%,
+        #7B4E9C 75%,
+        #A34D96 100%
+    );
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    color: #ffffff;
 }
 
 /* IMAGE OVERLAY */
@@ -1885,13 +1879,11 @@ input[type="file"].form-control {
 .auth-welcome-overlay {
     position: absolute;
     inset: 0;
-
     background: linear-gradient(
         to top,
-        rgba(35, 35, 110, 0.25),
+        rgba(123, 78, 156, 0.15),
         transparent
     );
-
     z-index: 1;
 }
 
