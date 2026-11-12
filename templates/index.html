@@ -60,168 +60,120 @@
 </section>
 
 <!-- ABOUT SECTION -->
-<section class="container py-5">
+<section class="container py-5 my-4">
 
     <div class="text-center mb-5">
-        <h2 class="fw-bold text-primary">About Our Portal</h2>
-
-        <p class="text-secondary mx-auto">
+        <span class="text-uppercase fw-semibold small" style="letter-spacing: 2px; color: #7651ad;">
+            About Us
+        </span>
+        <h2 class="fw-bold mt-2 mb-3" style="color: #1e1b4b;">
+            Scholarships, Made Simple &amp; Transparent
+        </h2>
+        <p class="text-muted mx-auto mb-0" style="max-width: 640px;">
             Our platform simplifies the scholarship application process
             and supports transparent eligibility evaluation and fund allocation.
         </p>
     </div>
 
+    {% set features = [
+        ('bi-mortarboard-fill', 'Scholarship Opportunities',
+         'Explore available scholarships and understand their eligibility criteria, benefits, and application deadlines.',
+         '#0250c5', '#e8efff'),
+        ('bi-clipboard-check-fill', 'Eligibility Evaluation',
+         'Applications are evaluated on academic performance and family income according to scholarship requirements.',
+         '#7651ad', '#f1eaf9'),
+        ('bi-cash-stack', 'Fund Allocation',
+         'Available scholarship funds are allocated transparently to eligible students.',
+         '#bd4e9c', '#fbe9f5')
+    ] %}
+
     <div class="row g-4">
-
+        {% for icon, title, desc, color, bg in features %}
         <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3">
-                <div class="card-body">
-                    <i class="bi bi-mortarboard-fill display-4 text-primary"></i>
-
-                    <h5 class="fw-bold mt-3">
-                        Scholarship Opportunities
-                    </h5>
-
-                    <p class="text-secondary mb-0">
-                        Explore available scholarships and understand their
-                        eligibility criteria, benefits, and application deadlines.
-                    </p>
+            <div class="card h-100 border-0 rounded-4 p-4 feature-card"
+                 style="box-shadow: 0 8px 30px rgba(30, 27, 75, 0.08);">
+                <div class="d-flex align-items-center justify-content-center rounded-4 mb-4"
+                     style="width: 64px; height: 64px; background: {{ bg }};">
+                    <i class="bi {{ icon }} fs-2" style="color: {{ color }};" aria-hidden="true"></i>
                 </div>
+                <h5 class="fw-bold mb-2" style="color: #1e1b4b;">{{ title }}</h5>
+                <p class="text-muted mb-0">{{ desc }}</p>
             </div>
         </div>
-
-        <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3">
-                <div class="card-body">
-                    <i class="bi bi-clipboard-check-fill display-4 text-primary"></i>
-
-                    <h5 class="fw-bold mt-3">
-                        Eligibility Evaluation
-                    </h5>
-
-                    <p class="text-secondary mb-0">
-                        Evaluate applications based on academic performance
-                        and family income according to scholarship requirements.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100 border-0 shadow-sm rounded-4 text-center p-3">
-                <div class="card-body">
-                    <i class="bi bi-cash-stack display-4 text-primary"></i>
-
-                    <h5 class="fw-bold mt-3">
-                        Fund Allocation
-                    </h5>
-
-                    <p class="text-secondary mb-0">
-                        Support transparent allocation of available
-                        scholarship funds to eligible students.
-                    </p>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
+
 </section>
 
 
 <!-- HOW IT WORKS -->
-<section class="bg-light py-5">
-
-    <div class="container">
+<section class="py-5" style="background: #f6f8ff;">
+    <div class="container py-4">
 
         <div class="text-center mb-5">
-            <h2 class="fw-bold text-primary">How It Works</h2>
-
-            <p class="text-secondary">
-                Applying for a scholarship is simple.
+            <span class="text-uppercase fw-semibold small" style="letter-spacing: 2px; color: #7651ad;">
+                How It Works
+            </span>
+            <h2 class="fw-bold mt-2 mb-3" style="color: #1e1b4b;">
+                Apply in 4 Simple Steps
+            </h2>
+            <p class="text-muted mx-auto mb-0" style="max-width: 560px;">
+                From registration to final decision, everything happens in one place.
             </p>
         </div>
 
-        <div class="row g-4">
+        {% set steps = [
+            ('bi-person-plus-fill', 'Register',
+             'Create your student account using your personal details.'),
+            ('bi-file-earmark-text-fill', 'Apply',
+             'Select a scholarship and submit the required details and documents.'),
+            ('bi-patch-check-fill', 'Verification',
+             'Your application and documents are checked against eligibility criteria.'),
+            ('bi-graph-up-arrow', 'Track Status',
+             'View your application status and final decision.')
+        ] %}
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm rounded-4 text-center">
-                    <div class="card-body p-4">
-                        <div class="bg-primary text-white rounded-circle
-                                    d-flex align-items-center justify-content-center
-                                    mx-auto mb-3"
-                             style="width:55px;height:55px;">
-                            <h4 class="mb-0 fw-bold">1</h4>
-                        </div>
+        <div class="row g-4 position-relative">
 
-                        <h5 class="fw-bold">Register</h5>
-
-                        <p class="text-secondary mb-0">
-                            Create your student account using your personal details.
-                        </p>
-                    </div>
-                </div>
+            <!-- dotted connector line (desktop only) -->
+            <div class="d-none d-lg-block position-absolute"
+                 style="top: 36px; left: 12.5%; right: 12.5%; border-top: 2px dashed #c3cdf0; z-index: 0;">
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm rounded-4 text-center">
-                    <div class="card-body p-4">
-                        <div class="bg-primary text-white rounded-circle
-                                    d-flex align-items-center justify-content-center
-                                    mx-auto mb-3"
-                             style="width:55px;height:55px;">
-                            <h4 class="mb-0 fw-bold">2</h4>
-                        </div>
+            {% for icon, title, desc in steps %}
+            <div class="col-sm-6 col-lg-3 text-center position-relative" style="z-index: 1;">
 
-                        <h5 class="fw-bold">Apply</h5>
-
-                        <p class="text-secondary mb-0">
-                            Select a scholarship and submit the required details
-                            and documents.
-                        </p>
-                    </div>
+                <div class="d-flex align-items-center justify-content-center rounded-circle mx-auto mb-3 text-white"
+                     style="width: 72px; height: 72px;
+                            background: linear-gradient(135deg, #0250c5, #7651ad);
+                            box-shadow: 0 0 0 8px #f6f8ff, 0 10px 20px rgba(2, 80, 197, 0.25);">
+                    <i class="bi {{ icon }} fs-3" aria-hidden="true"></i>
                 </div>
+
+                <span class="badge rounded-pill mb-2 px-3 py-2"
+                      style="background: #e8efff; color: #0250c5;">
+                    Step {{ loop.index }}
+                </span>
+
+                <h5 class="fw-bold mb-2" style="color: #1e1b4b;">{{ title }}</h5>
+                <p class="text-muted mb-0 px-lg-2">{{ desc }}</p>
+
             </div>
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm rounded-4 text-center">
-                    <div class="card-body p-4">
-                        <div class="bg-primary text-white rounded-circle
-                                    d-flex align-items-center justify-content-center
-                                    mx-auto mb-3"
-                             style="width:55px;height:55px;">
-                            <h4 class="mb-0 fw-bold">3</h4>
-                        </div>
-
-                        <h5 class="fw-bold">Verification</h5>
-
-                        <p class="text-secondary mb-0">
-                            Your application and documents are checked
-                            against eligibility criteria.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card h-100 border-0 shadow-sm rounded-4 text-center">
-                    <div class="card-body p-4">
-                        <div class="bg-primary text-white rounded-circle
-                                    d-flex align-items-center justify-content-center
-                                    mx-auto mb-3"
-                             style="width:55px;height:55px;">
-                            <h4 class="mb-0 fw-bold">4</h4>
-                        </div>
-
-                        <h5 class="fw-bold">Track Status</h5>
-
-                        <p class="text-secondary mb-0">
-                            View your application status and final decision.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
+
+        <!-- bottom CTA (guests only) -->
+        {% if not session.get('student_id') and not session.get('admin_id') %}
+        <div class="text-center mt-5">
+            <a href="{{ url_for('register') }}"
+               class="btn btn-lg fw-bold rounded-pill px-5 text-white"
+               style="background: linear-gradient(110deg, #0250c5, #7651ad);">
+                Start Your Application
+            </a>
+        </div>
+        {% endif %}
+
     </div>
 </section>
 <!-- FAQ SECTION -->
