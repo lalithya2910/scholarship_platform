@@ -51,12 +51,7 @@ a:hover {
     color: var(--secondary);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
     color: var(--text-dark);
     font-weight: 700;
 }
@@ -168,7 +163,6 @@ header {
         opacity: 0;
         transform: translateY(5px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -610,118 +604,239 @@ input[type="file"].form-control {
 .auth-page {
     min-height: 100vh;
     padding: 0;
-    background: #f4f6fc;
+    background: #C783A6;
+    font-family: Arial, sans-serif;
+    color: #222222;
+}
+
+.auth-outer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px;
+    background: #C783A6;
 }
 
 .auth-layout {
     display: flex;
-    min-height: 100vh;
     width: 100%;
+    max-width: 1500px;
+    min-height: 760px;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
+
+/* LEFT IMAGE PANEL */
 
 .auth-welcome {
     position: relative;
     display: flex;
+    flex: 0 0 62%;
     align-items: center;
     justify-content: center;
-    width: 48%;
-    min-height: 100vh;
-    padding: 55px;
+    width: 62%;
+    min-width: 0;
+    min-height: 760px;
+    padding: 65px;
     overflow: hidden;
-    background: var(--gradient);
+
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(49, 84, 185, 0.40),
+            rgba(81, 78, 170, 0.38),
+            rgba(123, 78, 156, 0.40),
+            rgba(163, 77, 150, 0.42)
+        ),
+        url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
 
-.auth-welcome-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 490px;
+.auth-welcome-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to top,
+        rgba(123, 78, 156, 0.15),
+        transparent
+    );
+    pointer-events: none;
 }
 
-.auth-welcome h1 {
-    margin-bottom: 22px;
-    color: #ffffff;
-    font-size: clamp(30px, 3.2vw, 44px);
-    line-height: 1.25;
-    font-weight: 750;
-}
-
-.auth-welcome p {
-    margin-bottom: 0;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.auth-welcome .bi {
-    color: #ffffff;
-}
+/* DECORATIVE CIRCLES */
 
 .auth-decoration {
     position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 50%;
+    z-index: 2;
     pointer-events: none;
 }
 
 .decoration-one {
-    top: -120px;
-    right: -100px;
-    width: 360px;
-    height: 360px;
-    background: rgba(255, 255, 255, 0.06);
+    width: 400px;
+    height: 400px;
+    top: -230px;
+    right: -150px;
 }
 
 .decoration-two {
-    bottom: -170px;
-    left: -100px;
-    width: 430px;
-    height: 430px;
-    background: rgba(255, 255, 255, 0.05);
+    width: 500px;
+    height: 500px;
+    bottom: -350px;
+    left: -200px;
 }
+
+/* WELCOME CONTENT */
+
+.auth-welcome-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 680px;
+    color: #ffffff;
+}
+
+.auth-logo {
+    margin-bottom: 35px;
+}
+
+.auth-logo i {
+    font-size: 65px;
+    color: #ffffff;
+}
+
+.auth-welcome-content h1 {
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: clamp(34px, 4vw, 58px);
+    font-weight: 750;
+    line-height: 1.15;
+}
+
+.auth-welcome-content p {
+    max-width: 550px;
+    margin-bottom: 28px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+/* FEATURE PILLS */
+
+.auth-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.auth-features span {
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.auth-features i {
+    margin-right: 7px;
+}
+
+.auth-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #5045a5;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* RIGHT FORM PANEL */
 
 .auth-form-panel {
     display: flex;
-    flex: 1;
+    flex: 0 0 38%;
     flex-direction: column;
     justify-content: center;
-    width: 52%;
+    width: 38%;
     min-width: 0;
-    padding: 40px;
+    min-height: 760px;
+    padding: 45px 35px;
+    overflow-y: auto;
     background: #ffffff;
+    color: #222222;
 }
 
-.auth-form-panel > .alert {
-    width: 100%;
-    max-width: 500px;
-    margin-right: auto;
-    margin-left: auto;
+.auth-form-panel h1,
+.auth-form-panel h2,
+.auth-form-panel h3 {
+    color: #222222;
+    font-weight: 700;
 }
 
-.form-container {
+.auth-form-panel p,
+.auth-form-panel label {
+    color: #555555;
+}
+
+/* FORM CONTAINER */
+
+.auth-form-panel .form-container {
     width: 100%;
-    max-width: 460px;
-    margin: 0 auto;
+    max-width: 400px;
+    margin: 12px auto;
+    padding: 28px;
+    border: 1px solid #dce3f0;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 6px 22px rgba(2, 80, 197, 0.10);
+    transition: box-shadow 0.3s ease;
+}
+
+.auth-form-panel .form-container:hover {
+    box-shadow: 0 12px 35px rgba(2, 80, 197, 0.15);
 }
 
 .form-container h2 {
-    font-size: 29px;
+    margin-bottom: 6px;
+    font-size: 24px;
 }
 
 .form-container > p {
     color: var(--text-muted);
 }
 
+.register-description {
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+/* FORM FIELDS */
+
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 7px;
-    color: var(--text-dark);
-    font-size: 14px;
+    margin-bottom: 5px;
+    color: #344054;
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -730,20 +845,75 @@ input[type="file"].form-control {
 .form-group textarea {
     display: block;
     width: 100%;
-    min-height: 45px;
-    padding: 11px 13px;
+    min-height: 40px;
+    padding: 8px 11px;
     border: 1px solid #d9e0eb;
-    border-radius: 8px;
+    border-radius: 7px;
     background: #ffffff;
-    font-size: 14px;
+    color: #222222;
+    font-size: 13px;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(2, 80, 197, 0.1);
+    border-color: #80509a;
+    box-shadow: 0 0 0 3px rgba(128, 80, 154, 0.12);
+}
+
+.form-group textarea {
+    min-height: 65px;
+    resize: vertical;
+}
+
+/* LOGIN ICON */
+
+.auth-form-panel .login-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: linear-gradient(100deg, #3456b5, #80509a, #ad4c91);
+    color: #ffffff;
+    font-size: 25px;
+}
+
+/* BUTTONS */
+
+.auth-form-panel .btn {
+    min-height: 44px;
+}
+
+.auth-form-panel .btn-primary,
+.auth-form-panel button[type="submit"] {
+    min-height: 44px;
+    border: none;
+    border-radius: 7px;
+    background: linear-gradient(100deg, #3456b5, #80509a, #ad4c91);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.auth-form-panel .btn-primary:hover,
+.auth-form-panel button[type="submit"]:hover {
+    color: #ffffff;
+    opacity: 0.93;
+}
+
+/* LINKS */
+
+.auth-form-panel a {
+    color: #80509a;
+    text-decoration: none;
+}
+
+.auth-form-panel a:hover {
+    color: #ad4c91;
+    text-decoration: underline;
 }
 
 .forgot-link {
@@ -757,40 +927,23 @@ input[type="file"].form-control {
 }
 
 .form-footer {
-    margin: 20px 0 0;
-    text-align: center;
+    margin: 14px 0 0;
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 13px;
+    text-align: center;
 }
 
 .form-footer a {
     font-weight: 650;
 }
 
-.auth-form-panel .btn {
-    min-height: 44px;
-}
+/* AUTH ALERTS */
 
-.auth-form-panel .btn-primary {
-    background: var(--gradient);
-    border: none;
-}
-
-.auth-form-panel .btn-primary:hover {
-    opacity: 0.93;
-}
-
-.auth-form-panel .login-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    margin: 0 auto;
-    border-radius: 50%;
-    background: var(--gradient);
-    color: #ffffff;
-    font-size: 32px;
+.auth-form-panel > .alert {
+    width: 100%;
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
@@ -921,7 +1074,436 @@ input[type="file"].form-control {
 
 
 /* =========================================
-   19. RESPONSIVE DESIGN - TABLETS
+   19. STUDENT DASHBOARD
+========================================= */
+
+.student-dashboard {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* WELCOME SECTION */
+
+.student-welcome-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 190px;
+    overflow: hidden;
+    border: none;
+    background: linear-gradient(120deg, #0250c5 0%, #5638b8 55%, #d43f8d 100%);
+}
+
+.student-welcome-section .welcome-content {
+    position: relative;
+    z-index: 1;
+}
+
+.student-welcome-section h2 {
+    font-size: clamp(23px, 3vw, 32px);
+}
+
+.student-welcome-section p {
+    max-width: 600px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.17);
+    font-size: 12px;
+}
+
+.welcome-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.13);
+    color: #ffffff;
+    font-size: 48px;
+}
+
+/* SECTION HEADINGS */
+
+.dashboard-section-heading h4,
+.student-quick-actions h4 {
+    color: #172b4d;
+    font-size: 19px;
+}
+
+.dashboard-section-heading p,
+.student-quick-actions p {
+    font-size: 13px;
+}
+
+/* STUDENT STAT CARDS */
+
+.student-stat-card {
+    border: 1px solid #e8edf5 !important;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(20, 45, 90, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.student-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 24px rgba(20, 45, 90, 0.10);
+}
+
+.student-stat-card .card-body {
+    padding: 20px 16px;
+}
+
+.student-stat-card .stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.student-stat-card .stat-blue {
+    color: #0250c5;
+    background: #eaf1ff;
+}
+
+.student-stat-card .stat-green {
+    color: #198754;
+    background: #e6f6ed;
+}
+
+.student-stat-card .stat-cyan {
+    color: #087e9b;
+    background: #e3f7fb;
+}
+
+.student-stat-card .stat-orange {
+    color: #b77900;
+    background: #fff4d8;
+}
+
+.student-stat-card .stat-red {
+    color: #dc3545;
+    background: #fdebed;
+}
+
+.stat-label {
+    min-height: 36px;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.stat-number {
+    margin-bottom: 7px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.stat-description {
+    color: #8995a7;
+    font-size: 11px;
+}
+
+/* QUICK ACTIONS */
+
+.student-quick-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid #e8edf5;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(20, 45, 90, 0.04);
+}
+
+.quick-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.student-action-primary,
+.student-action-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.student-action-primary {
+    border: none;
+    background: linear-gradient(100deg, #0250c5, #5638b8);
+    color: #ffffff;
+}
+
+.student-action-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(100deg, #0143a8, #45299e);
+    color: #ffffff;
+}
+
+.student-action-secondary {
+    border: 1px solid #cbd8ee;
+    background: #ffffff;
+    color: #0250c5;
+}
+
+.student-action-secondary:hover {
+    border-color: #0250c5;
+    background: #0250c5;
+    color: #ffffff;
+}
+
+
+/* =========================================
+   20. EDIT SCHOLARSHIP PAGE
+========================================= */
+
+.edit-scholarship-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* MAIN FORM CARD */
+
+.edit-scholarship-card {
+    overflow: hidden;
+    border: none;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(36, 50, 74, 0.10);
+    transition: box-shadow 0.3s ease;
+}
+
+.edit-scholarship-card:hover {
+    box-shadow: 0 14px 40px rgba(36, 50, 74, 0.14);
+}
+
+/* HEADER */
+
+.edit-scholarship-header {
+    padding: 24px;
+    background: linear-gradient(120deg, #0250c5 0%, #5145b5 55%, #d43f8d 100%);
+    color: #ffffff;
+}
+
+/* HEADINGS */
+
+.edit-scholarship-page h2,
+.edit-scholarship-page h5,
+.edit-scholarship-page h6 {
+    color: #24324a;
+    font-weight: 700;
+}
+
+/* SECTION DIVIDER */
+
+.edit-scholarship-page .section-heading {
+    padding-bottom: 14px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e9edf5;
+}
+
+/* FORM LABELS */
+
+.edit-scholarship-page .form-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* INPUTS */
+
+.edit-scholarship-page .form-control,
+.edit-scholarship-page .form-select {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 13px;
+    border: 1px solid #d9e0ec;
+    border-radius: 9px;
+    background-color: #ffffff;
+    color: #263247;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-scholarship-page textarea.form-control {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.edit-scholarship-page .form-control:focus,
+.edit-scholarship-page .form-select:focus {
+    outline: none;
+    border-color: #5145b5;
+    box-shadow: 0 0 0 3px rgba(81, 69, 181, 0.12);
+}
+
+/* INPUT GROUP */
+
+.edit-scholarship-page .input-group-text {
+    min-width: 44px;
+    justify-content: center;
+    border: 1px solid #d9e0ec;
+    border-radius: 9px 0 0 9px;
+    background-color: #f5f7fc;
+}
+
+.edit-scholarship-page .input-group .form-control {
+    border-radius: 0 9px 9px 0;
+}
+
+.edit-scholarship-page .form-control::placeholder {
+    color: #98a2b3;
+    opacity: 1;
+}
+
+/* REQUIRED DOCUMENTS */
+
+.edit-document-grid {
+    margin-top: 5px;
+}
+
+.edit-document-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 14px;
+    border: 1px solid #e0e6f0;
+    border-radius: 10px;
+    background-color: #f9faff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.edit-document-card:hover {
+    transform: translateY(-2px);
+    border-color: #7b8ce0;
+    background-color: #f0f4ff;
+    box-shadow: 0 4px 12px rgba(81, 69, 181, 0.08);
+}
+
+.edit-document-card:has(input:checked) {
+    border-color: #5145b5;
+    background-color: #edf2ff;
+}
+
+.edit-document-card .form-check-input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #5145b5;
+}
+
+.edit-document-card .form-check-input:checked {
+    border-color: #5145b5;
+    background-color: #5145b5;
+}
+
+.edit-document-card span {
+    color: #344054;
+    font-size: 13px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* UPDATE BUTTON */
+
+.edit-update-btn {
+    min-width: 205px;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(100deg, #0250c5, #5145b5, #d43f8d);
+    color: #ffffff;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edit-update-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(100deg, #0143a9, #4438a3, #bd3279);
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(81, 69, 181, 0.25);
+}
+
+.edit-update-btn:focus {
+    box-shadow: 0 0 0 3px rgba(81, 69, 181, 0.2);
+}
+
+/* CANCEL BUTTON */
+
+.edit-scholarship-page .btn-light {
+    border: 1px solid #d9e0ec;
+    border-radius: 9px;
+    color: #344054;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.edit-scholarship-page .btn-light:hover {
+    transform: translateY(-1px);
+    background-color: #edf1f8;
+}
+
+/* INFORMATION NOTE */
+
+.edit-scholarship-page .info-note {
+    padding: 14px 16px;
+    border: 1px solid #dce8ff;
+    border-radius: 10px;
+    background-color: #f1f6ff;
+    color: #42526b;
+    font-size: 13px;
+}
+
+.edit-scholarship-page .form-text {
+    margin-top: 7px;
+    color: #7b8496;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   21. RESPONSIVE DESIGN - TABLETS
 ========================================= */
 
 @media (max-width: 991.98px) {
@@ -944,28 +1526,58 @@ input[type="file"].form-control {
         padding: 25px 18px 35px;
     }
 
+    /* AUTH */
+
+    .auth-outer {
+        padding: 25px;
+    }
+
+    .auth-layout {
+        min-height: 100vh;
+    }
+
     .auth-welcome {
-        width: 42%;
-        padding: 30px;
+        flex: 0 0 45%;
+        width: 45%;
+        min-height: 100vh;
+        padding: 35px;
     }
 
     .auth-form-panel {
-        width: 58%;
-        padding: 30px;
+        flex: 0 0 55%;
+        width: 55%;
+        min-height: 100vh;
+        padding: 30px 24px;
     }
 
-    .auth-welcome h1 {
-        font-size: 30px;
+    .auth-welcome-content h1 {
+        font-size: 34px;
     }
 
-    .auth-welcome p {
-        font-size: 15px;
+    .auth-welcome-content p {
+        font-size: 16px;
+    }
+
+    .auth-logo i {
+        font-size: 52px;
+    }
+
+    .auth-features span {
+        padding: 8px 13px;
+        font-size: 13px;
+    }
+
+    /* EDIT SCHOLARSHIP */
+
+    .edit-scholarship-page {
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 }
 
 
 /* =========================================
-   20. RESPONSIVE DESIGN - MOBILE
+   22. RESPONSIVE DESIGN - MOBILE
 ========================================= */
 
 @media (max-width: 767.98px) {
@@ -1005,33 +1617,76 @@ input[type="file"].form-control {
         font-size: 19px;
     }
 
+    /* AUTH LAYOUT */
+
+    .auth-outer {
+        padding: 0;
+    }
+
     .auth-layout {
         flex-direction: column;
+        min-height: 100vh;
+        border-radius: 0;
     }
 
     .auth-welcome {
+        flex: 0 0 auto;
         width: 100%;
-        min-height: auto;
+        min-height: 300px;
         padding: 35px 24px;
+        background-position: center;
     }
 
     .auth-welcome-content {
         max-width: 560px;
     }
 
-    .auth-welcome h1 {
+    .auth-welcome-content h1 {
         margin-bottom: 12px;
-        font-size: 28px;
+        font-size: 30px;
     }
 
-    .auth-welcome p {
-        font-size: 14px;
+    .auth-welcome-content p {
+        margin-bottom: 18px;
+        font-size: 15px;
         line-height: 1.7;
     }
 
+    .auth-logo {
+        margin-bottom: 18px;
+    }
+
+    .auth-logo i {
+        font-size: 43px;
+    }
+
+    .auth-features {
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .auth-features span {
+        padding: 7px 11px;
+        font-size: 12px;
+    }
+
+    .auth-tagline {
+        padding: 9px 15px;
+        font-size: 12px;
+    }
+
     .auth-form-panel {
+        flex: 1 1 auto;
         width: 100%;
+        min-height: auto;
         padding: 30px 20px 40px;
+        overflow-y: visible;
+    }
+
+    .auth-form-panel .form-container {
+        max-width: 460px;
+        margin: 8px auto;
+        padding: 24px 20px;
     }
 
     .form-container h2 {
@@ -1046,444 +1701,9 @@ input[type="file"].form-control {
     .footer {
         padding: 20px 15px;
     }
-}
 
+    /* STUDENT DASHBOARD */
 
-/* =========================================
-   21. SMALL MOBILE DEVICES
-========================================= */
-
-@media (max-width: 420px) {
-
-    body {
-        font-size: 14px;
-    }
-
-    .navbar-brand {
-        font-size: 16px;
-    }
-
-    .main-content {
-        padding: 16px 10px 25px;
-    }
-
-    .auth-welcome {
-        padding: 28px 20px;
-    }
-
-    .auth-welcome h1 {
-        font-size: 24px;
-    }
-
-    .auth-form-panel {
-        padding: 25px 16px 32px;
-    }
-
-    .form-container h2 {
-        font-size: 23px;
-    }
-
-    .btn {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-
-    .footer p {
-        font-size: 12px;
-    }
-}
-
-/* Login Form Border and Card Design */
-.auth-form-panel .form-container {
-    max-width: 460px;
-    width: 100%;
-    padding: 35px;
-    background-color: #ffffff;
-    border: 1px solid #dce3f0;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(2, 80, 197, 0.12);
-    transition: box-shadow 0.3s ease;
-}
-
-.auth-form-panel .form-container:hover {
-    box-shadow: 0 12px 35px rgba(2, 80, 197, 0.17);
-}
-
-/* Responsive Border Card */
-@media (max-width: 576px) {
-    .auth-form-panel .form-container {
-        padding: 24px 18px;
-        border-radius: 12px;
-    }
-}
-
-
-
-/* Compact Student Registration Form */
-.auth-form-panel .form-container {
-    max-width: 400px;
-    padding: 24px 28px;
-    margin: 12px auto;
-    border: 1px solid #dce3f0;
-    border-radius: 14px;
-    background: #ffffff;
-    box-shadow: 0 6px 22px rgba(2, 80, 197, 0.10);
-}
-
-/* Smaller heading */
-.auth-form-panel .form-container h2 {
-    font-size: 24px;
-    margin-bottom: 6px;
-}
-
-.auth-form-panel .form-container .register-description {
-    font-size: 13px;
-    margin-bottom: 16px;
-}
-
-/* Reduce space between fields */
-.auth-form-panel .form-container .form-group {
-    margin-bottom: 12px;
-}
-
-/* Compact labels */
-.auth-form-panel .form-container .form-group label {
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-/* Smaller inputs */
-.auth-form-panel .form-container .form-group input,
-.auth-form-panel .form-container .form-group select,
-.auth-form-panel .form-container .form-group textarea {
-    min-height: 38px;
-    padding: 7px 10px;
-    font-size: 13px;
-    border-radius: 7px;
-}
-
-/* Compact address field */
-.auth-form-panel .form-container .form-group textarea {
-    min-height: 65px;
-    resize: vertical;
-}
-
-/* Smaller icon */
-.auth-form-panel .form-container .login-icon {
-    width: 52px;
-    height: 52px;
-    font-size: 25px;
-    margin-bottom: 12px !important;
-}
-
-/* Compact submit button */
-.auth-form-panel .form-container button[type="submit"] {
-    min-height: 40px;
-    padding: 8px 12px;
-    font-size: 13px;
-    border-radius: 7px;
-}
-
-/* Compact footer */
-.auth-form-panel .form-container .form-footer {
-    margin-top: 14px !important;
-    margin-bottom: 0;
-    font-size: 13px;
-}
-
-/* Mobile responsive */
-@media (max-width: 576px) {
-    .auth-form-panel .form-container {
-        max-width: 100%;
-        padding: 20px 18px;
-        margin: 8px auto;
-    }
-}
-
-
-/* Compact Registration Form Only */
-.auth-form-panel .register-form-container {
-    max-width: 320px;
-    width: 100%;
-    padding: 12px 16px;
-    margin: 0 auto;
-    border-radius: 10px;
-}
-
-/* Heading */
-.register-form-container h2 {
-    font-size: 19px;
-    margin-bottom: 4px;
-}
-
-/* Description */
-.register-form-container .register-description {
-    font-size: 11px;
-    margin-bottom: 8px;
-}
-
-/* Reduce field spacing */
-.register-form-container .form-group {
-    margin-bottom: 6px;
-}
-
-.register-form-container .form-group label {
-    font-size: 11px;
-    margin-bottom: 2px;
-}
-
-/* Smaller input fields */
-.register-form-container .form-group input,
-.register-form-container .form-group select,
-.register-form-container .form-group textarea {
-    min-height: 29px;
-    padding: 4px 7px;
-    font-size: 11px;
-    border-radius: 5px;
-}
-
-.register-form-container .form-group textarea {
-    min-height: 38px;
-}
-
-/* Smaller icon */
-.register-form-container .login-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-    margin-bottom: 5px !important;
-}
-
-/* Submit button */
-.register-form-container button[type="submit"] {
-    min-height: 30px;
-    padding: 5px 8px;
-    font-size: 11px;
-}
-
-/* Footer */
-.register-form-container .form-footer {
-    margin-top: 7px !important;
-    font-size: 11px;
-}
-
-@media (max-width: 576px) {
-    .auth-form-panel .register-form-container {
-        max-width: 100%;
-        padding: 12px;
-    }
-}
-
-/* ==============================
-   STUDENT DASHBOARD
-============================== */
-
-.student-dashboard {
-    max-width: 1600px;
-    margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-/* Welcome Section */
-.student-welcome-section {
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    min-height: 190px;
-    background: linear-gradient(120deg, #0250c5 0%, #5638b8 55%, #d43f8d 100%);
-    border: none;
-}
-
-.student-welcome-section .welcome-content {
-    position: relative;
-    z-index: 1;
-}
-
-.student-welcome-section h2 {
-    font-size: clamp(23px, 3vw, 32px);
-}
-
-.student-welcome-section p {
-    font-size: 14px;
-    line-height: 1.7;
-    max-width: 600px;
-}
-
-.welcome-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 7px 12px;
-    font-size: 12px;
-    background: rgba(255, 255, 255, 0.17);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 30px;
-}
-
-.welcome-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    font-size: 48px;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.13);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 28px;
-}
-
-/* Section Heading */
-.dashboard-section-heading h4,
-.student-quick-actions h4 {
-    color: #172b4d;
-    font-size: 19px;
-}
-
-.dashboard-section-heading p,
-.student-quick-actions p {
-    font-size: 13px;
-}
-
-/* Statistic Cards */
-.student-stat-card {
-    background: #ffffff;
-    border: 1px solid #e8edf5 !important;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(20, 45, 90, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.student-stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 9px 24px rgba(20, 45, 90, 0.10);
-}
-
-.student-stat-card .card-body {
-    padding: 20px 16px;
-}
-
-.stat-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 43px;
-    height: 43px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    font-size: 20px;
-}
-
-.stat-blue {
-    color: #0250c5;
-    background: #eaf1ff;
-}
-
-.stat-green {
-    color: #198754;
-    background: #e6f6ed;
-}
-
-.stat-cyan {
-    color: #087e9b;
-    background: #e3f7fb;
-}
-
-.stat-orange {
-    color: #b77900;
-    background: #fff4d8;
-}
-
-.stat-red {
-    color: #dc3545;
-    background: #fdebed;
-}
-
-.stat-label {
-    min-height: 36px;
-    margin-bottom: 5px;
-    color: #64748b;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.5;
-}
-
-.stat-number {
-    margin-bottom: 7px;
-    font-size: 30px;
-    font-weight: 700;
-}
-
-.stat-description {
-    color: #8995a7;
-    font-size: 11px;
-}
-
-/* Quick Actions */
-.student-quick-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 24px;
-    background: #ffffff;
-    border: 1px solid #e8edf5;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(20, 45, 90, 0.04);
-}
-
-.quick-action-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.student-action-primary,
-.student-action-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 42px;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
-
-.student-action-primary {
-    color: #ffffff;
-    background: linear-gradient(100deg, #0250c5, #5638b8);
-    border: none;
-}
-
-.student-action-primary:hover {
-    color: #ffffff;
-    background: linear-gradient(100deg, #0143a8, #45299e);
-    transform: translateY(-2px);
-}
-
-.student-action-secondary {
-    color: #0250c5;
-    background: #ffffff;
-    border: 1px solid #cbd8ee;
-}
-
-.student-action-secondary:hover {
-    color: #ffffff;
-    background: #0250c5;
-    border-color: #0250c5;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
     .student-dashboard {
         padding-left: 14px;
         padding-right: 14px;
@@ -1498,8 +1718,8 @@ input[type="file"].form-control {
         width: 65px;
         height: 65px;
         margin-right: 0;
-        font-size: 30px;
         border-radius: 18px;
+        font-size: 30px;
     }
 
     .student-stat-card .card-body {
@@ -1518,269 +1738,8 @@ input[type="file"].form-control {
     .quick-action-buttons .btn {
         flex: 1 1 100%;
     }
-}
 
-@media (max-width: 480px) {
-    .student-welcome-section {
-        padding: 20px !important;
-    }
-
-    .welcome-icon {
-        display: none;
-    }
-
-    .student-welcome-section p {
-        font-size: 13px;
-    }
-
-    .stat-number {
-        font-size: 26px;
-    }
-}
-
-
-/* ==========================================
-   EDIT SCHOLARSHIP PAGE
-========================================== */
-
-.edit-scholarship-page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
-/* Main Form Card */
-.edit-scholarship-card {
-    background: #ffffff;
-    border: none;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 10px 35px rgba(36, 50, 74, 0.10);
-    transition: box-shadow 0.3s ease;
-}
-
-.edit-scholarship-card:hover {
-    box-shadow: 0 14px 40px rgba(36, 50, 74, 0.14);
-}
-
-/* Gradient Header */
-.edit-scholarship-header {
-    background: linear-gradient(
-        120deg,
-        #0250c5 0%,
-        #5145b5 55%,
-        #d43f8d 100%
-    );
-    color: #ffffff;
-    padding: 24px;
-}
-
-/* Page Heading */
-.edit-scholarship-page h2 {
-    color: #24324a;
-    font-weight: 700;
-}
-
-.edit-scholarship-page h5,
-.edit-scholarship-page h6 {
-    color: #24324a;
-    font-weight: 700;
-}
-
-/* Section Divider */
-.edit-scholarship-page .section-heading {
-    padding-bottom: 14px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid #e9edf5;
-}
-
-/* Form Labels */
-.edit-scholarship-page .form-label {
-    display: block;
-    color: #344054;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 9px;
-}
-
-/* Text Inputs, Select and Textarea */
-.edit-scholarship-page .form-control,
-.edit-scholarship-page .form-select {
-    min-height: 44px;
-    width: 100%;
-    border: 1px solid #d9e0ec;
-    border-radius: 9px;
-    background-color: #ffffff;
-    color: #263247;
-    font-size: 14px;
-    padding: 10px 13px;
-    transition: border-color 0.2s ease,
-                box-shadow 0.2s ease;
-}
-
-.edit-scholarship-page textarea.form-control {
-    min-height: 110px;
-    resize: vertical;
-}
-
-/* Input Focus */
-.edit-scholarship-page .form-control:focus,
-.edit-scholarship-page .form-select:focus {
-    border-color: #5145b5;
-    box-shadow: 0 0 0 3px rgba(81, 69, 181, 0.12);
-    outline: none;
-}
-
-/* Input Group */
-.edit-scholarship-page .input-group-text {
-    min-width: 44px;
-    justify-content: center;
-    background-color: #f5f7fc;
-    border: 1px solid #d9e0ec;
-    border-radius: 9px 0 0 9px;
-}
-
-.edit-scholarship-page .input-group .form-control {
-    border-radius: 0 9px 9px 0;
-}
-
-/* Placeholder */
-.edit-scholarship-page .form-control::placeholder {
-    color: #98a2b3;
-    opacity: 1;
-}
-
-/* Required Documents Grid */
-.edit-document-grid {
-    margin-top: 5px;
-}
-
-/* Document Selection Cards */
-.edit-document-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 60px;
-    padding: 14px;
-    background-color: #f9faff;
-    border: 1px solid #e0e6f0;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease,
-                border-color 0.2s ease,
-                box-shadow 0.2s ease,
-                transform 0.2s ease;
-}
-
-.edit-document-card:hover {
-    background-color: #f0f4ff;
-    border-color: #7b8ce0;
-    box-shadow: 0 4px 12px rgba(81, 69, 181, 0.08);
-    transform: translateY(-2px);
-}
-
-/* Selected Document */
-.edit-document-card:has(input:checked) {
-    background-color: #edf2ff;
-    border-color: #5145b5;
-}
-
-/* Document Checkbox */
-.edit-document-card .form-check-input {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-    flex-shrink: 0;
-    cursor: pointer;
-    accent-color: #5145b5;
-}
-
-.edit-document-card .form-check-input:checked {
-    background-color: #5145b5;
-    border-color: #5145b5;
-}
-
-/* Document Text */
-.edit-document-card span {
-    color: #344054;
-    font-size: 13px;
-    font-weight: 600;
-    overflow-wrap: anywhere;
-}
-
-/* Update Button */
-.edit-update-btn {
-    min-width: 205px;
-    padding: 11px 22px;
-    border: none;
-    border-radius: 9px;
-    color: #ffffff;
-    font-weight: 600;
-    background: linear-gradient(
-        100deg,
-        #0250c5,
-        #5145b5,
-        #d43f8d
-    );
-    transition: transform 0.2s ease,
-                box-shadow 0.2s ease;
-}
-
-.edit-update-btn:hover {
-    color: #ffffff;
-    background: linear-gradient(
-        100deg,
-        #0143a9,
-        #4438a3,
-        #bd3279
-    );
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(81, 69, 181, 0.25);
-}
-
-.edit-update-btn:focus {
-    box-shadow: 0 0 0 3px rgba(81, 69, 181, 0.2);
-}
-
-/* Cancel and Back Buttons */
-.edit-scholarship-page .btn-light {
-    border: 1px solid #d9e0ec;
-    color: #344054;
-    font-weight: 600;
-    border-radius: 9px;
-    transition: background-color 0.2s ease,
-                transform 0.2s ease;
-}
-
-.edit-scholarship-page .btn-light:hover {
-    background-color: #edf1f8;
-    transform: translateY(-1px);
-}
-
-/* Information Note */
-.edit-scholarship-page .info-note {
-    padding: 14px 16px;
-    background-color: #f1f6ff;
-    border: 1px solid #dce8ff;
-    border-radius: 10px;
-    color: #42526b;
-    font-size: 13px;
-}
-
-/* Form Helper Text */
-.edit-scholarship-page .form-text {
-    color: #7b8496;
-    font-size: 12px;
-    margin-top: 7px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .edit-scholarship-page {
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
+    /* EDIT SCHOLARSHIP */
 
     .edit-scholarship-page .card-body {
         padding: 24px !important;
@@ -1791,7 +1750,44 @@ input[type="file"].form-control {
     }
 }
 
+
+/* =========================================
+   23. SMALL MOBILE DEVICES
+========================================= */
+
 @media (max-width: 576px) {
+
+    .auth-welcome {
+        min-height: 260px;
+        padding: 28px 20px;
+    }
+
+    .auth-welcome-content h1 {
+        font-size: 26px;
+    }
+
+    .auth-welcome-content p {
+        font-size: 13px;
+    }
+
+    .auth-form-panel {
+        padding: 25px 16px 32px;
+    }
+
+    .auth-form-panel .form-container {
+        max-width: 100%;
+        padding: 20px 18px;
+        border-radius: 12px;
+    }
+
+    .register-form-container {
+        padding: 14px !important;
+    }
+
+    .form-container h2 {
+        font-size: 23px;
+    }
+
     .edit-scholarship-page {
         padding-left: 12px;
         padding-right: 12px;
@@ -1820,260 +1816,110 @@ input[type="file"].form-control {
 }
 
 
-/* ==========================================
-   SCHOLARSHIP AUTH PAGE - PREMIUM DESIGN
-========================================== */
+/* =========================================
+   24. EXTRA SMALL MOBILE DEVICES
+========================================= */
 
-.auth-page {
-    margin: 0;
-    min-height: 100vh;
-    background: #C783A6;
-    font-family: Arial, sans-serif;
-    color: white;
-}
-.auth-outer {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 45px;
-    background: #C783A6;
-}
-.auth-layout {
-    display: flex;
-    width: 100%;
-    max-width: 1500px;
-    min-height: 760px;
-    background: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-}
+@media (max-width: 420px) {
 
+    body {
+        font-size: 14px;
+    }
 
-/* LEFT PANEL - IMAGE + BLUE PURPLE PINK GRADIENT */
+    .navbar-brand {
+        font-size: 16px;
+    }
 
-.auth-welcome {
-    position: relative;
-    width: 62%;
-    min-height: 760px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 65px;
-    overflow: hidden;
+    .main-content {
+        padding: 16px 10px 25px;
+    }
 
-    background-image:
-        linear-gradient(
-            135deg,
-            rgba(49, 84, 185, 0.40),
-            rgba(81, 78, 170, 0.38),
-            rgba(123, 78, 156, 0.40),
-            rgba(163, 77, 150, 0.42)
-        ),
-        url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
+    .auth-welcome {
+        min-height: 240px;
+        padding: 25px 18px;
+    }
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    .auth-welcome-content h1 {
+        font-size: 23px;
+    }
 
-    color: #ffffff;
-}
-/* IMAGE OVERLAY */
+    .auth-welcome-content p {
+        font-size: 12px;
+    }
 
-.auth-welcome-overlay {
-    position: absolute;
-    inset: 0;
+    .auth-logo i {
+        font-size: 36px;
+    }
 
-    background: linear-gradient(
-        to top,
-        rgba(123, 78, 156, 0.15),
-        transparent
-    );
+    .auth-form-panel {
+        padding: 22px 14px 30px;
+    }
 
-    z-index: 1;
-}
+    .auth-form-panel .form-container {
+        padding: 18px 15px;
+    }
 
-/* DECORATIVE CIRCLES */
+    .form-container h2 {
+        font-size: 21px;
+    }
 
-.auth-decoration {
-    position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 50%;
-    z-index: 2;
+    .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+
+    /* STUDENT DASHBOARD */
+
+    .student-welcome-section {
+        padding: 20px !important;
+    }
+
+    .welcome-icon {
+        display: none;
+    }
+
+    .student-welcome-section p {
+        font-size: 13px;
+    }
+
+    .stat-number {
+        font-size: 26px;
+    }
 }
 
-.decoration-one {
-    width: 400px;
-    height: 400px;
-    top: -230px;
-    right: -150px;
+
+/* =========================================
+   25. ACCESSIBILITY AND FINAL FIXES
+========================================= */
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
 }
 
-.decoration-two {
-    width: 500px;
-    height: 500px;
-    bottom: -350px;
-    left: -200px;
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
-/* WELCOME CONTENT */
-
-.auth-welcome-content {
-    position: relative;
-    z-index: 3;
-    max-width: 680px;
-    width: 100%;
-    color: #ffffff;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
-
-/* LOGO */
-
-.auth-logo {
-    margin-bottom: 35px;
-}
-
-.auth-logo i {
-    font-size: 65px;
-    color: #ffffff;
-}
-
-/* HEADING */
-
-.auth-welcome-content h1 {
-    font-size: clamp(34px, 4vw, 58px);
-    font-weight: 750;
-    line-height: 1.15;
-    margin-bottom: 25px;
-    color: #ffffff;
-}
-
-/* DESCRIPTION */
-
-.auth-welcome-content p {
-    font-size: 19px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.92);
-    max-width: 550px;
-    margin-bottom: 28px;
-}
-
-/* FEATURE PILLS */
-
-.auth-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 25px;
-}
-
-.auth-features span {
-    padding: 10px 20px;
-    border: 1px solid rgba(255,255,255,0.55);
-    border-radius: 30px;
-    background: rgba(255,255,255,0.15);
-    color: white;
-    font-size: 15px;
-    backdrop-filter: blur(8px);
-}
-
-.auth-features i {
-    margin-right: 7px;
-}
-
-/* TAGLINE */
-
-.auth-tagline {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 22px;
-    border-radius: 30px;
-    background: white;
-    color: #5045a5;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-/* RIGHT FORM PANEL - WHITE */
-
-.auth-form-panel {
-    width: 38%;
-    min-height: 760px;
-    padding: 55px 45px;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow-y: auto;
-    color: #222222;
-}
-
-/* HEADINGS */
-
-.auth-form-panel h1,
-.auth-form-panel h2,
-.auth-form-panel h3 {
-    color: #222222;
-    font-weight: 700;
-}
-
-/* TEXT AND LABELS */
-
-.auth-form-panel p,
-.auth-form-panel label {
-    color: #555555;
-}
-
-/* INPUT FIELDS */
-
-.auth-form-panel .form-control,
-.auth-form-panel .form-select {
-    min-height: 52px;
-    background: #ffffff;
-    border: 1px solid #d6d6d6;
-    border-radius: 6px;
-    color: #222222;
-    padding: 12px 16px;
-}
-
-.auth-form-panel .form-control::placeholder {
-    color: #999999;
-}
-
-.auth-form-panel .form-control:focus,
-.auth-form-panel .form-select:focus {
-    background: #ffffff;
-    color: #222222;
-    border-color: #80509a;
-    box-shadow: 0 0 0 3px rgba(128, 80, 154, 0.12);
-}
-
-/* BUTTONS */
-
-.auth-form-panel .btn-primary,
-.auth-form-panel button[type="submit"] {
-    background: linear-gradient(
-        100deg,
-        #3456b5,
-        #80509a,
-        #ad4c91
-    );
-    border: none;
-    color: #ffffff;
-    min-height: 50px;
-    border-radius: 6px;
-    font-weight: 600;
-}
-
-/* LINKS */
-
-.auth-form-panel a {
-    color: #80509a;
-    text-decoration: none;
-}
-
-.auth-form-panel a:hover {
-    color: #ad4c91;
-    text-decoration: underline;
-}
+```
