@@ -58,7 +58,7 @@ def cleanup_uploaded_documents(local_files, cloudinary_public_ids):
 
 @app.route("/")
 def index():
-    return redirect(url_for("index.html"))
+    return render_template(url_for("index.html"))
 
 
 @app.route("/login", methods=["GET", "POST"])
