@@ -1851,7 +1851,7 @@ input[type="file"].form-control {
 }
 
 
-/* LEFT PANEL - IMAGE + BLUE PINK GRADIENT */
+/* LEFT PANEL - IMAGE + BLUE PURPLE PINK GRADIENT */
 
 .auth-welcome {
     position: relative;
@@ -1863,13 +1863,19 @@ input[type="file"].form-control {
     padding: 65px;
     overflow: hidden;
 
-    background: linear-gradient(
-        135deg,
-        #3154B9 0%,
-        #514EAA 50%,
-        #7B4E9C 75%,
-        #A34D96 100%
-    );
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(49, 84, 185, 0.82) 0%,
+            rgba(81, 78, 170, 0.78) 50%,
+            rgba(123, 78, 156, 0.75) 75%,
+            rgba(163, 77, 150, 0.78) 100%
+        ),
+        url("/static/graduation-bg.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     color: #ffffff;
 }
@@ -1879,11 +1885,13 @@ input[type="file"].form-control {
 .auth-welcome-overlay {
     position: absolute;
     inset: 0;
+
     background: linear-gradient(
         to top,
         rgba(123, 78, 156, 0.15),
         transparent
     );
+
     z-index: 1;
 }
 
@@ -1891,7 +1899,7 @@ input[type="file"].form-control {
 
 .auth-decoration {
     position: absolute;
-    border: 1px solid rgba(255,255,255,0.22);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 50%;
     z-index: 2;
 }
@@ -1917,51 +1925,10 @@ input[type="file"].form-control {
     z-index: 3;
     max-width: 680px;
     width: 100%;
-    color: white;
+    color: #ffffff;
 }
 
-.auth-welcome-content h1,
-.auth-welcome-content p {
-    color: white;
-}
-
-.auth-logo i {
-    font-size: 75px;
-    color: white;
-}
-
-/* DECORATIVE CIRCLES */
-
-.auth-decoration {
-    position: absolute;
-    border: 1px solid rgba(255,255,255,0.22);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.decoration-one {
-    width: 400px;
-    height: 400px;
-    top: -230px;
-    right: -150px;
-}
-
-.decoration-two {
-    width: 500px;
-    height: 500px;
-    bottom: -350px;
-    left: -200px;
-}
-
-/* WELCOME CONTENT */
-
-.auth-welcome-content {
-    position: relative;
-    z-index: 3;
-    max-width: 680px;
-    width: 100%;
-    color: white;
-}
+/* LOGO */
 
 .auth-logo {
     margin-bottom: 35px;
@@ -1969,21 +1936,25 @@ input[type="file"].form-control {
 
 .auth-logo i {
     font-size: 65px;
-    color: white;
+    color: #ffffff;
 }
+
+/* HEADING */
 
 .auth-welcome-content h1 {
     font-size: clamp(34px, 4vw, 58px);
     font-weight: 750;
     line-height: 1.15;
     margin-bottom: 25px;
-    color: white;
+    color: #ffffff;
 }
+
+/* DESCRIPTION */
 
 .auth-welcome-content p {
     font-size: 19px;
     line-height: 1.7;
-    color: rgba(255,255,255,0.92);
+    color: rgba(255, 255, 255, 0.92);
     max-width: 550px;
     margin-bottom: 28px;
 }
