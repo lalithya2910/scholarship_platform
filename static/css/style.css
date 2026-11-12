@@ -1,477 +1,254 @@
 
 /* =========================================
-   1. GLOBAL AUTHENTICATION STYLES
-========================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-.auth-page {
-    min-height: 100vh;
-    margin: 0;
-    padding: 35px;
-    background: #075477;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* =========================================
-   2. MAIN CONTAINER
-========================================= */
-
-.auth-outer {
-    width: 100%;
-    max-width: 1450px;
-    margin: auto;
-}
-
-.auth-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    width: 100%;
-    min-height: 780px;
-    background: #111214;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-}
-
-/* =========================================
-   3. LEFT IMAGE PANEL
-========================================= */
-
-.auth-welcome {
-    position: relative;
-    min-height: 700px;
-    padding: 50px;
-
-    background-image:
-        linear-gradient(
-            120deg,
-            rgba(2, 80, 197, 0.42),
-            rgba(92, 47, 160, 0.30),
-            rgba(212, 63, 141, 0.38)
-        ),
-        url("static\css\Graduates Celebrating Under Colorful Skies.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    color: #ffffff;
-}
-
-.auth-welcome-content {
-    position: relative;
-    z-index: 2;
-
-    width: 100%;
-    height: 100%;
-    min-height: 600px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Logo */
-
-.auth-logo {
-    font-size: 48px;
-    color: #ffffff;
-}
-
-/* Welcome Text */
-
-.auth-welcome-text {
-    max-width: 680px;
-    margin-top: 40px;
-}
-
-.auth-welcome h1 {
-    font-size: clamp(36px, 4vw, 58px);
-    font-weight: 800;
-    line-height: 1.15;
-    color: #ffffff;
-    margin-bottom: 25px;
-}
-
-.auth-welcome p {
-    max-width: 570px;
-    font-size: 18px;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 25px;
-}
-
-/* Features */
-
-.auth-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.auth-features span {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 12px 18px;
-
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 30px;
-
-    background: rgba(255, 255, 255, 0.13);
-
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-
-    backdrop-filter: blur(5px);
-}
-
-.auth-features i {
-    font-size: 16px;
-}
-
-/* Tagline */
-
-.auth-tagline {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    width: fit-content;
-    padding: 15px 25px;
-
-    border-radius: 30px;
-    background: #ffffff;
-
-    color: #333399;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-/* =========================================
-   4. RIGHT FORM PANEL
+   RIGHT PANEL - WHITE THEME
 ========================================= */
 
 .auth-form-panel {
-    background: #111214;
-    color: #ffffff;
+    background: #ffffff;
+    color: #252525;
+
+    padding: 45px 50px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding: 55px 50px;
+    min-width: 0;
 }
 
 .auth-form-content {
     width: 100%;
     max-width: 480px;
+
     margin: auto;
+    padding: 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #e0e5f5;
+    border-radius: 16px;
+
+    box-shadow: 0 12px 35px rgba(49, 75, 150, 0.10);
 }
 
-/* Headings */
+/* =========================================
+   HEADINGS
+========================================= */
 
 .auth-form-panel h1,
 .auth-form-panel h2,
 .auth-form-panel h3,
 .auth-form-panel h4 {
-    color: #ffffff;
+    color: #202333;
     font-weight: 700;
 }
 
 .auth-form-panel h2 {
-    font-size: 34px;
-    margin-bottom: 15px;
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 .auth-form-panel h3 {
-    font-size: 27px;
+    font-size: 26px;
     margin-bottom: 12px;
 }
 
 .auth-form-panel p {
-    color: #b8b8b8;
+    color: #555b70;
     font-size: 15px;
+    line-height: 1.6;
 }
 
-/* Labels */
+/* =========================================
+   LABELS
+========================================= */
 
 .auth-form-panel label {
-    display: block;
-    color: #eeeeee;
+    color: #343b52;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-/* Input Fields */
+/* =========================================
+   INPUT FIELDS
+========================================= */
 
 .auth-form-panel .form-control,
 .auth-form-panel .form-select {
     width: 100%;
-    min-height: 53px;
+    min-height: 48px;
 
-    padding: 13px 15px;
+    padding: 12px 14px;
 
-    background-color: #17191c;
-    border: 1px solid #454545;
-    border-radius: 5px;
+    background: #eef2ff;
 
-    color: #ffffff;
-    font-size: 15px;
+    border: 1px solid #d9e1f2;
+    border-radius: 8px;
+
+    color: #202333;
+    font-size: 14px;
 
     transition: 0.3s ease;
 }
 
 .auth-form-panel .form-control::placeholder {
-    color: #a5a5a5;
-}
-
-.auth-form-panel .form-select option {
-    background: #17191c;
-    color: #ffffff;
+    color: #7c8499;
 }
 
 .auth-form-panel .form-control:focus,
 .auth-form-panel .form-select:focus {
-    background-color: #17191c;
-    color: #ffffff;
+    background: #ffffff;
 
-    border-color: #f28b00;
+    color: #202333;
 
-    box-shadow: 0 0 0 3px rgba(242, 139, 0, 0.13);
+    border-color: #5967d8;
+
+    box-shadow: 0 0 0 3px rgba(89, 103, 216, 0.12);
 }
 
-/* Textarea */
-
-.auth-form-panel textarea.form-control {
-    min-height: 100px;
+.auth-form-panel .form-select option {
+    background: #ffffff;
+    color: #202333;
 }
 
-/* Checkboxes */
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+.auth-form-panel .input-group-text {
+    background: #eef2ff;
+    border: 1px solid #d9e1f2;
+    color: #5967a8;
+}
+
+/* =========================================
+   CHECKBOX
+========================================= */
 
 .auth-form-panel .form-check-input {
-    background-color: #17191c;
-    border-color: #777777;
+    border-color: #aab4d0;
 }
 
 .auth-form-panel .form-check-input:checked {
-    background-color: #f28b00;
-    border-color: #f28b00;
+    background-color: #5967d8;
+    border-color: #5967d8;
 }
 
 .auth-form-panel .form-check-label {
-    color: #cccccc;
+    color: #555b70;
     font-weight: 400;
 }
 
 /* =========================================
-   5. BUTTONS
+   GRADIENT BUTTONS
 ========================================= */
 
 .auth-form-panel .btn-primary,
 .auth-form-panel button[type="submit"] {
-    background: #f28b00;
-    border: 1px solid #f28b00;
+    min-height: 48px;
+
+    background: linear-gradient(
+        135deg,
+        #4059bd 0%,
+        #7651ad 50%,
+        #bd4e9c 100%
+    );
+
+    border: none;
+    border-radius: 8px;
+
     color: #ffffff;
 
-    min-height: 50px;
     font-size: 15px;
     font-weight: 600;
 
-    border-radius: 5px;
     transition: 0.3s ease;
 }
 
 .auth-form-panel .btn-primary:hover,
 .auth-form-panel button[type="submit"]:hover {
-    background: #dc7900;
-    border-color: #dc7900;
+    background: linear-gradient(
+        135deg,
+        #3049a8 0%,
+        #68429f 50%,
+        #a83c88 100%
+    );
+
+    color: #ffffff;
+
     transform: translateY(-2px);
 }
 
+/* Outline buttons */
+
 .auth-form-panel .btn-outline-primary {
-    background: transparent;
-    border: 1px solid #f28b00;
-    color: #f28b00;
+    background: #ffffff;
+    border: 1px solid #5967d8;
+    color: #5967d8;
+    border-radius: 8px;
 }
 
 .auth-form-panel .btn-outline-primary:hover {
-    background: #f28b00;
+    background: #5967d8;
     color: #ffffff;
 }
 
 /* =========================================
-   6. LINKS
+   LINKS
 ========================================= */
 
 .auth-form-panel a {
-    color: #f5a623;
+    color: #6551a5;
     text-decoration: none;
-    font-weight: 500;
-    transition: 0.2s ease;
+    font-weight: 600;
 }
 
 .auth-form-panel a:hover {
-    color: #ffbd55;
+    color: #bd4e9c;
     text-decoration: underline;
 }
 
 /* =========================================
-   7. ALERT MESSAGES
+   ALERT MESSAGES
 ========================================= */
 
 .auth-form-panel .alert {
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 14px;
     margin-bottom: 20px;
 }
 
-.auth-form-panel .alert .btn-close {
-    filter: none;
-}
-
-/* =========================================
-   8. PASSWORD INPUT / ICON
-========================================= */
-
-.auth-form-panel .input-group-text {
-    background: #17191c;
-    border: 1px solid #454545;
-    color: #cccccc;
-}
-
-.auth-form-panel .input-group .form-control {
-    border-right: none;
-}
-
-/* =========================================
-   9. HORIZONTAL DIVIDER
-========================================= */
-
 .auth-form-panel hr {
-    border-color: #555555;
-    opacity: 0.8;
-    margin: 25px 0;
+    border-color: #d9dce5;
+    opacity: 1;
+    margin: 22px 0;
 }
 
 /* =========================================
-   10. RESPONSIVE DESIGN
+   RESPONSIVE
 ========================================= */
-
-@media (max-width: 1100px) {
-
-    .auth-layout {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .auth-welcome {
-        padding: 35px;
-    }
-
-    .auth-form-panel {
-        padding: 40px 30px;
-    }
-
-    .auth-welcome h1 {
-        font-size: 40px;
-    }
-}
 
 @media (max-width: 900px) {
 
-    .auth-page {
-        padding: 20px;
-    }
-
-    .auth-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .auth-welcome {
-        min-height: 430px;
-        padding: 35px;
-    }
-
-    .auth-welcome-content {
-        min-height: 350px;
-    }
-
-    .auth-welcome h1 {
-        font-size: 38px;
-    }
-
     .auth-form-panel {
-        padding: 45px 35px;
+        padding: 35px;
     }
 }
 
 @media (max-width: 576px) {
 
-    .auth-page {
-        padding: 10px;
-    }
-
-    .auth-layout {
-        border-radius: 10px;
-    }
-
-    .auth-welcome {
-        min-height: 370px;
-        padding: 25px;
-    }
-
-    .auth-welcome-content {
-        min-height: 320px;
-    }
-
-    .auth-logo {
-        font-size: 35px;
-    }
-
-    .auth-welcome h1 {
-        font-size: 29px;
-    }
-
-    .auth-welcome p {
-        font-size: 14px;
-    }
-
-    .auth-features {
-        gap: 8px;
-    }
-
-    .auth-features span {
-        padding: 9px 12px;
-        font-size: 12px;
-    }
-
-    .auth-tagline {
-        padding: 11px 18px;
-        font-size: 14px;
-    }
-
     .auth-form-panel {
-        padding: 35px 20px;
+        padding: 25px 15px;
+    }
+
+    .auth-form-content {
+        padding: 22px 18px;
     }
 
     .auth-form-panel h2 {
-        font-size: 27px;
-    }
-
-    .auth-form-panel h3 {
-        font-size: 23px;
+        font-size: 25px;
     }
 }
+
 
