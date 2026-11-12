@@ -1837,15 +1837,14 @@ input[type="file"].form-control {
     align-items: center;
     justify-content: center;
     padding: 45px;
-    background: linear-gradient(135deg, #07517a, #061b2b);
+    background: #C783A6;
 }
-
 .auth-layout {
     display: flex;
     width: 100%;
     max-width: 1500px;
     min-height: 760px;
-    background: #121416;
+    background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
