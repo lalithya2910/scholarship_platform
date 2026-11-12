@@ -28,18 +28,20 @@
         <!-- LEFT WELCOME PANEL -->
         <section class="auth-welcome">
 
+            <div class="auth-welcome-overlay"></div>
+
             <div class="auth-decoration decoration-one"></div>
             <div class="auth-decoration decoration-two"></div>
 
             <div class="auth-welcome-content">
 
-                <div class="mb-4">
-                    <i class="bi bi-mortarboard-fill display-1"></i>
+                <div class="auth-icon">
+                    <i class="bi bi-mortarboard-fill"></i>
                 </div>
 
                 <h1>
                     {% block welcome_title %}
-                    Welcome to Scholarship Portal!
+                    Welcome to Scholarship Eligibility &amp; Fund Allocation Platform
                     {% endblock %}
                 </h1>
 
@@ -49,14 +51,27 @@
                     {% endblock %}
                 </p>
 
-                <div class="mt-4">
-                    <span class="badge rounded-pill bg-light text-primary px-3 py-2">
-                        <i class="bi bi-book-half me-2"></i>
-                        Learn. Grow. Succeed.
+                <div class="auth-features">
+
+                    <span>
+                        <i class="bi bi-check-circle-fill"></i>
+                        Fair Allocation
                     </span>
+
+                    <span>
+                        <i class="bi bi-graph-up-arrow"></i>
+                        Real-time Tracking
+                    </span>
+
+                </div>
+
+                <div class="auth-tagline">
+                    <i class="bi bi-book-half"></i>
+                    Learn. Grow. Succeed.
                 </div>
 
             </div>
+
         </section>
 
         <!-- RIGHT FORM PANEL -->
@@ -98,3 +113,4 @@
 
 </body>
 </html>
+
