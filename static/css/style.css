@@ -1136,3 +1136,110 @@ header {
 }
 
 
+/* =========================================
+   THREE COLOUR NAVBAR
+========================================= */
+
+.navbar {
+    min-height: 72px;
+    padding: 12px 0;
+
+    background: linear-gradient(
+        110deg,
+        #0250c5 0%,
+        #7651ad 50%,
+        #bd4e9c 100%
+    );
+
+    border-bottom: none;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.navbar-brand i {
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.navbar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 11px 15px !important;
+
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 7px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.20);
+}
+
+.navbar .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* =========================================
+   THREE COLOUR FOOTER
+========================================= */
+
+.footer {
+    width: 100%;
+    padding: 25px 15px;
+
+    background: linear-gradient(
+        110deg,
+        #0250c5 0%,
+        #7651ad 50%,
+        #bd4e9c 100%
+    );
+
+    color: #ffffff;
+    margin-top: auto;
+}
+
+.footer p {
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   MOBILE NAVBAR
+========================================= */
+
+@media (max-width: 991px) {
+
+    .navbar-collapse {
+        padding: 15px 0 8px;
+    }
+
+    .navbar-nav {
+        align-items: stretch !important;
+        gap: 5px;
+    }
+
+    .navbar .nav-link {
+        padding: 11px 14px !important;
+    }
+}
+
+
+
