@@ -224,5 +224,116 @@
         </div>
     </div>
 </section>
+<!-- FAQ SECTION -->
+<section class="py-5" style="background: #ffffff;">
+    <div class="container py-4" style="max-width: 820px;">
+
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="text-uppercase fw-semibold small" style="letter-spacing: 2px; color: #7651ad;">
+                FAQ
+            </span>
+            <h2 class="fw-bold mt-2 mb-3" style="color: #1e1b4b;">
+                Frequently Asked Questions
+            </h2>
+            <p class="text-muted mb-0">
+                Quick answers to common questions about applying for scholarships.
+            </p>
+        </div>
+
+        {% set faqs = [
+            ('Who can apply for scholarships?',
+             'Any registered student who meets the academic performance and family income criteria of a scholarship can apply.'),
+            ('Which documents are required?',
+             'Usually an income certificate, previous marks memo, and ID proof. The exact list is shown on each scholarship page.'),
+            ('How is eligibility decided?',
+             'Your academic score and family income are checked automatically against the scholarship requirements, followed by document verification.'),
+            ('How long does verification take?',
+             'It usually takes a few working days. You can track progress anytime under My Applications.'),
+            ('Can I apply for more than one scholarship?',
+             'Yes, you can apply for every scholarship you are eligible for. Each application is evaluated separately.')
+        ] %}
+
+        <div class="accordion accordion-flush rounded-4 overflow-hidden"
+             id="faqAccordion"
+             style="box-shadow: 0 8px 30px rgba(30, 27, 75, 0.08);"
+             data-aos="fade-up" data-aos-delay="100">
+
+            {% for q, a in faqs %}
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button {{ 'collapsed' if not loop.first }} fw-semibold py-3"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq{{ loop.index }}"
+                            aria-expanded="{{ 'true' if loop.first else 'false' }}"
+                            aria-controls="faq{{ loop.index }}"
+                            style="color: #1e1b4b;">
+                        {{ q }}
+                    </button>
+                </h3>
+                <div id="faq{{ loop.index }}"
+                     class="accordion-collapse collapse {{ 'show' if loop.first }}"
+                     data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted pt-0">
+                        {{ a }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA BANNER -->
+<section class="text-white text-center py-5 position-relative overflow-hidden"
+         style="background: linear-gradient(110deg, #0250c5 0%, #7651ad 50%, #bd4e9c 100%);">
+
+    <!-- decorative circles -->
+    <div class="position-absolute rounded-circle"
+         style="width: 260px; height: 260px; background: rgba(255,255,255,.08); top: -90px; left: -60px;"></div>
+    <div class="position-absolute rounded-circle"
+         style="width: 200px; height: 200px; background: rgba(255,255,255,.08); bottom: -80px; right: -40px;"></div>
+
+    <div class="container py-4 position-relative" data-aos="zoom-in">
+
+        {% if session.get('student_id') %}
+            <h2 class="display-6 fw-bold mb-3">Found a scholarship that fits you?</h2>
+            <p class="lead mb-4 opacity-75">
+                Browse open scholarships and apply before the deadline.
+            </p>
+            <a href="{{ url_for('scholarships') }}"
+               class="btn btn-light btn-lg fw-bold rounded-pill px-5">
+                Browse Scholarships
+            </a>
+
+        {% elif session.get('admin_id') %}
+            <h2 class="display-6 fw-bold mb-3">Applications waiting for review?</h2>
+            <p class="lead mb-4 opacity-75">
+                Verify documents and allocate funds from your dashboard.
+            </p>
+            <a href="{{ url_for('admin_dashboard') }}"
+               class="btn btn-light btn-lg fw-bold rounded-pill px-5">
+                Go to Dashboard
+            </a>
+
+        {% else %}
+            <h2 class="display-6 fw-bold mb-3">Ready to find your scholarship?</h2>
+            <p class="lead mb-4 opacity-75">
+                Create your free account and apply in minutes.
+            </p>
+            <a href="{{ url_for('register') }}"
+               class="btn btn-light btn-lg fw-bold rounded-pill px-5 me-2 mb-2">
+                Register Now
+            </a>
+            <a href="{{ url_for('scholarships') }}"
+               class="btn btn-outline-light btn-lg rounded-pill px-5 mb-2">
+                Explore Scholarships
+            </a>
+        {% endif %}
+
+    </div>
+</section>
 
 {% endblock %}
