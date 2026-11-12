@@ -571,3 +571,203 @@
     }
 }
 
+/* =========================================
+   STUDENT LOGIN PAGE
+========================================= */
+
+.form-container {
+    width: 100%;
+    max-width: 440px;
+    margin: auto;
+    padding: 30px;
+
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #e5e8f0;
+
+    box-shadow: 0 8px 30px rgba(30, 45, 90, 0.08);
+}
+
+/* Login Icon */
+
+.login-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, #4059bd, #7651ad, #bd4e9c);
+    color: #ffffff;
+
+    border-radius: 50%;
+    font-size: 30px;
+}
+
+/* Heading */
+
+.form-container h2 {
+    color: #202944;
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.form-container p {
+    color: #70788b;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Form Group */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #303b56;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Input Fields */
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+    padding: 12px 14px;
+
+    background: #f3f5ff;
+    border: 1px solid #dce2f1;
+    border-radius: 8px;
+
+    color: #202333;
+    font-size: 14px;
+
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.form-group input::placeholder {
+    color: #929bad;
+}
+
+.form-group input:focus {
+    background: #ffffff;
+    border-color: #7651ad;
+    box-shadow: 0 0 0 3px rgba(118, 81, 173, 0.12);
+}
+
+/* Forgot Password */
+
+.forgot-link {
+    text-align: right;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.forgot-link a {
+    color: #6551a5;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    color: #bd4e9c;
+    text-decoration: underline;
+}
+
+/* Student Login Button */
+
+.form-container .btn-primary {
+    min-height: 48px;
+
+    background: linear-gradient(135deg, #4059bd, #7651ad, #bd4e9c);
+    border: none;
+    border-radius: 8px;
+
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.form-container .btn-primary:hover {
+    background: linear-gradient(135deg, #3049a8, #68429f, #a83c88);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 81, 173, 0.2);
+}
+
+/* Register Link */
+
+.form-footer {
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-footer a {
+    color: #6551a5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    color: #bd4e9c;
+    text-decoration: underline;
+}
+
+/* Divider */
+
+.form-container hr {
+    border-color: #e0e4ef;
+    opacity: 1;
+}
+
+/* Admin Login Button */
+
+.form-container .btn-outline-primary {
+    min-height: 46px;
+
+    background: #ffffff;
+    border: 1px solid #5967d8;
+    border-radius: 8px;
+
+    color: #5967d8;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.form-container .btn-outline-primary:hover {
+    background: #5967d8;
+    color: #ffffff;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 576px) {
+    .form-container {
+        padding: 24px 18px;
+    }
+
+    .form-container h2 {
+        font-size: 24px;
+    }
+
+    .login-icon {
+        width: 58px;
+        height: 58px;
+        font-size: 26px;
+    }
+}
+
+
