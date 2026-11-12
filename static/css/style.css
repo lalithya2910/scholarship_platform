@@ -902,3 +902,237 @@
     }
 }
 
+
+/* =========================================
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fb;
+    color: #26334c;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================================
+   2. NAVBAR
+========================================= */
+
+header {
+    width: 100%;
+}
+
+.navbar {
+    min-height: 72px;
+    padding: 12px 0;
+
+    background: linear-gradient(
+        110deg,
+        #061b42,
+        #075477
+    );
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+
+    color: #ffffff !important;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.navbar-brand i {
+    color: #a8c9ff;
+    font-size: 25px;
+}
+
+.navbar-nav {
+    gap: 8px;
+}
+
+.navbar .nav-link {
+    display: flex;
+    align-items: center;
+
+    padding: 11px 15px !important;
+
+    color: #e6edff !important;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 7px;
+    transition: 0.3s ease;
+}
+
+.navbar .nav-link i {
+    font-size: 16px;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.navbar .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* Navbar Toggler */
+
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 7px 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* =========================================
+   3. MAIN CONTENT
+========================================= */
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+}
+
+/* =========================================
+   4. FLASH MESSAGES
+========================================= */
+
+.alert {
+    border: none;
+    border-radius: 9px;
+
+    padding: 14px 18px;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #e5f7ed;
+    color: #187747;
+}
+
+.alert-danger,
+.alert-error {
+    background: #ffe8e9;
+    color: #bd3542;
+}
+
+.alert-warning {
+    background: #fff4df;
+    color: #9b6a12;
+}
+
+.alert-info {
+    background: #e5f3ff;
+    color: #1764a3;
+}
+
+/* =========================================
+   5. FOOTER
+========================================= */
+
+.footer {
+    width: 100%;
+    padding: 23px 15px;
+
+    background: #061b42;
+    color: #ffffff;
+
+    margin-top: auto;
+}
+
+.footer p {
+    color: #d6e1f5;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   6. AUTH MAIN
+========================================= */
+
+.auth-main {
+    flex: 1;
+    width: 100%;
+}
+
+/* =========================================
+   7. RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+    .navbar-collapse {
+        padding: 15px 0 8px;
+    }
+
+    .navbar-nav {
+        align-items: stretch !important;
+        gap: 4px;
+    }
+
+    .navbar .nav-link {
+        padding: 11px 14px !important;
+    }
+
+    .navbar .nav-link:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+}
+
+/* =========================================
+   8. RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .navbar {
+        min-height: 62px;
+    }
+
+    .navbar-brand {
+        font-size: 17px;
+    }
+
+    .navbar-brand i {
+        font-size: 21px;
+    }
+
+    .footer {
+        padding: 18px 12px;
+    }
+
+    .footer p {
+        font-size: 11px;
+    }
+
+    .main-content {
+        min-height: auto;
+    }
+}
+
+
