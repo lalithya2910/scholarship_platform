@@ -1,11 +1,208 @@
 
 /* =========================================
-   RIGHT PANEL - WHITE THEME
+   1. GLOBAL STYLES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.auth-page {
+    min-height: 100vh;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #075477;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================
+   2. MAIN CONTAINER
+========================================= */
+
+.auth-outer {
+    width: 100%;
+    max-width: 1550px;
+    margin: auto;
+}
+
+.auth-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    width: 100%;
+    min-height: 780px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================
+   3. LEFT IMAGE PANEL
+========================================= */
+
+.auth-welcome {
+    position: relative;
+
+    min-height: 780px;
+    padding: 45px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: transparent;
+}
+
+/* Full Background Image */
+
+.auth-bg-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 0;
+}
+
+/* Content */
+
+.auth-welcome-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    min-height: 680px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* =========================================
+   4. LOGO
+========================================= */
+
+.auth-logo {
+    font-size: 48px;
+    color: #ffffff;
+}
+
+/* =========================================
+   5. WELCOME TEXT
+========================================= */
+
+.auth-welcome-text {
+    max-width: 680px;
+    margin-top: 40px;
+}
+
+.auth-welcome h1 {
+    font-size: clamp(36px, 4vw, 58px);
+
+    font-weight: 800;
+    line-height: 1.15;
+
+    color: #ffffff;
+
+    margin-bottom: 25px;
+}
+
+.auth-welcome p {
+    max-width: 580px;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    color: #ffffff;
+
+    margin-bottom: 25px;
+}
+
+/* =========================================
+   6. FEATURES
+========================================= */
+
+.auth-features {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.auth-features span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 9px;
+    padding: 13px 19px;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.auth-features i {
+    font-size: 16px;
+}
+
+/* =========================================
+   7. TAGLINE
+========================================= */
+
+.auth-tagline {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 10px;
+    width: fit-content;
+
+    padding: 15px 25px;
+
+    background: #ffffff;
+
+    border-radius: 35px;
+
+    color: #4059bd;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.auth-tagline i {
+    font-size: 19px;
+}
+
+/* =========================================
+   8. RIGHT FORM PANEL
 ========================================= */
 
 .auth-form-panel {
     background: #ffffff;
-    color: #252525;
+
+    color: #252b40;
 
     padding: 45px 50px;
 
@@ -32,7 +229,7 @@
 }
 
 /* =========================================
-   HEADINGS
+   9. HEADINGS
 ========================================= */
 
 .auth-form-panel h1,
@@ -60,18 +257,22 @@
 }
 
 /* =========================================
-   LABELS
+   10. FORM LABELS
 ========================================= */
 
 .auth-form-panel label {
+    display: block;
+
     color: #343b52;
+
     font-size: 14px;
     font-weight: 600;
+
     margin-bottom: 8px;
 }
 
 /* =========================================
-   INPUT FIELDS
+   11. INPUT FIELDS
 ========================================= */
 
 .auth-form-panel .form-control,
@@ -87,6 +288,7 @@
     border-radius: 8px;
 
     color: #202333;
+
     font-size: 14px;
 
     transition: 0.3s ease;
@@ -112,18 +314,26 @@
     color: #202333;
 }
 
+/* Textarea */
+
+.auth-form-panel textarea.form-control {
+    min-height: 100px;
+}
+
 /* =========================================
-   INPUT GROUP
+   12. INPUT GROUP
 ========================================= */
 
 .auth-form-panel .input-group-text {
     background: #eef2ff;
+
     border: 1px solid #d9e1f2;
+
     color: #5967a8;
 }
 
 /* =========================================
-   CHECKBOX
+   13. CHECKBOX
 ========================================= */
 
 .auth-form-panel .form-check-input {
@@ -141,7 +351,7 @@
 }
 
 /* =========================================
-   GRADIENT BUTTONS
+   14. GRADIENT BUTTONS
 ========================================= */
 
 .auth-form-panel .btn-primary,
@@ -180,12 +390,14 @@
     transform: translateY(-2px);
 }
 
-/* Outline buttons */
+/* Outline Buttons */
 
 .auth-form-panel .btn-outline-primary {
     background: #ffffff;
+
     border: 1px solid #5967d8;
     color: #5967d8;
+
     border-radius: 8px;
 }
 
@@ -195,13 +407,17 @@
 }
 
 /* =========================================
-   LINKS
+   15. LINKS
 ========================================= */
 
 .auth-form-panel a {
     color: #6551a5;
+
     text-decoration: none;
+
     font-weight: 600;
+
+    transition: 0.2s ease;
 }
 
 .auth-form-panel a:hover {
@@ -210,7 +426,7 @@
 }
 
 /* =========================================
-   ALERT MESSAGES
+   16. ALERT MESSAGES
 ========================================= */
 
 .auth-form-panel .alert {
@@ -219,6 +435,10 @@
     margin-bottom: 20px;
 }
 
+/* =========================================
+   17. DIVIDER
+========================================= */
+
 .auth-form-panel hr {
     border-color: #d9dce5;
     opacity: 1;
@@ -226,17 +446,112 @@
 }
 
 /* =========================================
-   RESPONSIVE
+   18. RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .auth-layout {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .auth-welcome {
+        padding: 35px;
+    }
+
+    .auth-form-panel {
+        padding: 35px 25px;
+    }
+
+    .auth-form-content {
+        padding: 25px;
+    }
+
+    .auth-welcome h1 {
+        font-size: 40px;
+    }
+}
+
+/* =========================================
+   19. RESPONSIVE - SMALL TABLET
 ========================================= */
 
 @media (max-width: 900px) {
 
-    .auth-form-panel {
+    .auth-page {
+        padding: 20px;
+    }
+
+    .auth-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-welcome {
+        min-height: 430px;
         padding: 35px;
+    }
+
+    .auth-welcome-content {
+        min-height: 350px;
+    }
+
+    .auth-welcome h1 {
+        font-size: 38px;
+    }
+
+    .auth-form-panel {
+        padding: 40px 30px;
     }
 }
 
+/* =========================================
+   20. RESPONSIVE - MOBILE
+========================================= */
+
 @media (max-width: 576px) {
+
+    .auth-page {
+        padding: 10px;
+    }
+
+    .auth-layout {
+        border-radius: 10px;
+    }
+
+    .auth-welcome {
+        min-height: 380px;
+        padding: 25px;
+    }
+
+    .auth-welcome-content {
+        min-height: 330px;
+    }
+
+    .auth-logo {
+        font-size: 36px;
+    }
+
+    .auth-welcome h1 {
+        font-size: 29px;
+    }
+
+    .auth-welcome p {
+        font-size: 14px;
+    }
+
+    .auth-features {
+        gap: 8px;
+    }
+
+    .auth-features span {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .auth-tagline {
+        padding: 11px 18px;
+        font-size: 14px;
+    }
 
     .auth-form-panel {
         padding: 25px 15px;
@@ -248,6 +563,10 @@
 
     .auth-form-panel h2 {
         font-size: 25px;
+    }
+
+    .auth-form-panel h3 {
+        font-size: 23px;
     }
 }
 
