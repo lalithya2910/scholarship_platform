@@ -630,19 +630,16 @@ input[type="file"].form-control {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
+
 /* LEFT IMAGE PANEL */
+
 .auth-welcome {
     flex: 0 0 62%;
     width: 62%;
     min-height: 760px;
 
-    background-image:
-        linear-gradient(
-            rgba(30, 20, 70, 0.45),
-            rgba(30, 20, 70, 0.55)
-        ),
-        url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
-
+    /* Only image - No gray or dark overlay */
+    background-image: url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -652,17 +649,17 @@ input[type="file"].form-control {
     justify-content: center;
     align-items: flex-start;
 
-    color: white;
+    color: #ffffff;
     text-align: left;
     padding: 50px;
     position: relative;
     overflow: hidden;
 }
+
+/* Remove overlay completely */
+
 .auth-welcome-overlay {
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    pointer-events: none;
+    display: none;
 }
 
 /* DECORATIVE CIRCLES */
