@@ -633,33 +633,32 @@ input[type="file"].form-control {
 /* LEFT IMAGE PANEL */
 
 .auth-welcome {
-    position: relative;
-    display: flex;
     flex: 0 0 62%;
-    align-items: center;
-    justify-content: center;
     width: 62%;
-    min-width: 0;
     min-height: 760px;
-    padding: 65px;
-    overflow: hidden;
 
     background-image:
         linear-gradient(
-            135deg,
-            rgba(49, 84, 185, 0.40),
-            rgba(81, 78, 170, 0.38),
-            rgba(123, 78, 156, 0.40),
-            rgba(163, 77, 150, 0.42)
+            rgba(30, 20, 70, 0.55),
+            rgba(30, 20, 70, 0.65)
         ),
-        url("/static/Graduates Celebrating Under Colorful Skies.png");
+        url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #ffffff;
-}
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
 .auth-welcome-overlay {
     position: absolute;
     inset: 0;
