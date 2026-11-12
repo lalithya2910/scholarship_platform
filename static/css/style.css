@@ -570,3 +570,335 @@
         font-size: 23px;
     }
 }
+
+/* =========================================
+   STUDENT DASHBOARD
+========================================= */
+
+.student-dashboard {
+    padding: 25px !important;
+    color: #26334c;
+}
+
+/* =========================================
+   WELCOME SECTION
+========================================= */
+
+.student-welcome-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 220px;
+    padding: 35px 45px !important;
+
+    background: linear-gradient(
+        120deg,
+        #0750b5 0%,
+        #5b50b8 50%,
+        #bd4e9c 100%
+    );
+
+    overflow: hidden;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 1;
+}
+
+.welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 17px;
+
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.student-welcome-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.student-welcome-section p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+}
+
+.welcome-icon {
+    width: 115px;
+    height: 115px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+
+    color: #ffffff;
+    font-size: 60px;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.dashboard-section-heading h4,
+.student-quick-actions h4 {
+    color: #26334c;
+    font-size: 21px;
+}
+
+.dashboard-section-heading p,
+.student-quick-actions p {
+    font-size: 14px;
+    color: #737d91 !important;
+}
+
+/* =========================================
+   STAT CARDS
+========================================= */
+
+.student-stat-card {
+    height: 100%;
+    background: #ffffff;
+
+    border: 1px solid #e8ebf3;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(30, 50, 100, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.student-stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(30, 50, 100, 0.10);
+    border-color: #d8ddf5;
+}
+
+.student-stat-card .card-body {
+    padding: 22px 18px;
+}
+
+/* Stat Icons */
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+    font-size: 22px;
+
+    margin-bottom: 18px;
+}
+
+.stat-blue {
+    background: #e8efff;
+    color: #3563c9;
+}
+
+.stat-green {
+    background: #e5f7ed;
+    color: #23965b;
+}
+
+.stat-cyan {
+    background: #e1f7fb;
+    color: #1599b5;
+}
+
+.stat-orange {
+    background: #fff2df;
+    color: #e69a24;
+}
+
+.stat-red {
+    background: #ffe8e9;
+    color: #df515b;
+}
+
+/* Stat Text */
+
+.stat-label {
+    color: #667085;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.stat-description {
+    display: block;
+    color: #929bad;
+    font-size: 12px;
+}
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.student-quick-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+    padding: 25px 28px;
+
+    background: #ffffff;
+    border: 1px solid #e7eaf2;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 15px rgba(30, 50, 100, 0.04);
+}
+
+.quick-action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Primary Action */
+
+.student-action-primary {
+    padding: 12px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #4059bd,
+        #7651ad,
+        #bd4e9c
+    );
+
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.student-action-primary:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 81, 173, 0.2);
+}
+
+/* Secondary Action */
+
+.student-action-secondary {
+    padding: 12px 20px;
+
+    background: #ffffff;
+    color: #5967bd;
+
+    border: 1px solid #5967bd;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.student-action-secondary:hover {
+    background: #5967bd;
+    color: #ffffff;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 992px) {
+
+    .student-quick-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .quick-action-buttons {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 576px) {
+
+    .student-dashboard {
+        padding: 12px !important;
+    }
+
+    .student-welcome-section {
+        min-height: 190px;
+        padding: 25px !important;
+    }
+
+    .student-welcome-section h2 {
+        font-size: 23px;
+    }
+
+    .student-welcome-section p {
+        font-size: 13px;
+    }
+
+    .welcome-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+        border-radius: 15px;
+    }
+
+    .welcome-badge {
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+
+    .student-stat-card .card-body {
+        padding: 18px 15px;
+    }
+
+    .stat-number {
+        font-size: 27px;
+    }
+
+    .student-quick-actions {
+        padding: 20px;
+    }
+
+    .quick-action-buttons {
+        flex-direction: column;
+    }
+
+    .quick-action-buttons .btn {
+        width: 100%;
+    }
+}
+
