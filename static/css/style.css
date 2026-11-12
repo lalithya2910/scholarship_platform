@@ -639,7 +639,7 @@ input[type="file"].form-control {
     min-height: 760px;
 
     /* Only image - No gray or dark overlay */
-    background-image: url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
+    background-image: url("/static/Graduates Celebrating Under Colorful Skies.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
