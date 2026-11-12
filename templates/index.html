@@ -196,31 +196,6 @@ Home - Scholarship Portal
 </section>
 
 
-<!-- ================= REGISTRATION SECTION ================= -->
-
-{% if not session.get('student_id')
-      and not session.get('admin_id') %}
-
-<section class="cta-section">
-
-    <h2>Start Your Scholarship Journey!</h2>
-
-    <p>
-        Register as a student to explore available scholarships
-        and submit your applications.
-    </p>
-
-    <a href="{{ url_for('register') }}" class="btn">
-        Student Register
-    </a>
-
-    <a href="{{ url_for('login') }}" class="btn secondary-btn">
-        Login
-    </a>
-
-</section>
-
-{% endif %}
 
 
 {% endblock %}
