@@ -6,79 +6,56 @@
 {% block content %}
 
 
-<!-- HERO SECTION -->
-<section class="text-white py-5"
-         style="background: linear-gradient(110deg, #0250c5 0%, #7651ad 50%, #bd4e9c 100%);">
+<section class="hero-section text-white py-5">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
 
-    <div class="container py-5 text-center">
+      <!-- LEFT: text -->
+      <div class="col-lg-6 text-center text-lg-start">
 
         <span class="badge bg-light text-primary rounded-pill px-3 py-2 mb-3">
-            Welcome to Scholarship Portal
+          Apply in minutes
         </span>
 
         {% if session.get('student_id') %}
-
-            <h1 class="display-4 fw-bold mb-3">
-                Welcome to Scholarship Portal!
-            </h1>
-
-            <p class="lead mb-4">
-                Explore scholarship opportunities, check your eligibility,
-                apply for scholarships, and track your application status.
-            </p>
-
-            <a href="{{ url_for('scholarships') }}"
-               class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">
-                Explore Scholarships
-            </a>
-
-            <a href="{{ url_for('application_status') }}"
-               class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">
-                My Applications
-            </a>
+          <h1 class="display-5 fw-bold mb-3">Welcome back, {{ session.get('student_name', 'Student') }}!</h1>
+          <p class="lead mb-4">
+            Explore scholarship opportunities, check your eligibility,
+            apply, and track your application status.
+          </p>
+          <a href="{{ url_for('scholarships') }}" class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">Explore Scholarships</a>
+          <a href="{{ url_for('application_status') }}" class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">My Applications</a>
 
         {% elif session.get('admin_id') %}
-
-            <h1 class="display-4 fw-bold mb-3">
-                Welcome, Admin!
-            </h1>
-
-            <p class="lead mb-4">
-                Manage scholarships, review student applications,
-                verify documents, and allocate scholarship funds.
-            </p>
-
-            <a href="{{ url_for('admin_dashboard') }}"
-               class="btn btn-light btn-lg fw-bold rounded-pill px-4">
-                Go to Dashboard
-            </a>
+          <h1 class="display-5 fw-bold mb-3">Welcome, Admin!</h1>
+          <p class="lead mb-4">
+            Manage scholarships, review applications,
+            verify documents, and allocate funds.
+          </p>
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn-light btn-lg fw-bold rounded-pill px-4">Go to Dashboard</a>
 
         {% else %}
-
-            <h1 class="display-4 fw-bold mb-3">
-                Scholarship Eligibility &amp; Fund Allocation Platform
-            </h1>
-
-            <p class="lead mb-4">
-                Helping students discover scholarship opportunities
-                and receive financial support for their education.
-            </p>
-
-            <a href="{{ url_for('register') }}"
-               class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">
-                Get Started
-            </a>
-
-            <a href="{{ url_for('scholarships') }}"
-               class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">
-                Explore Scholarships
-            </a>
-
+          <h1 class="display-5 fw-bold mb-3">Scholarship Eligibility &amp; Fund Allocation Platform</h1>
+          <p class="lead mb-4">
+            Helping students discover scholarship opportunities
+            and receive financial support for their education.
+          </p>
+          <a href="{{ url_for('register') }}" class="btn btn-light btn-lg fw-bold rounded-pill px-4 me-2 mb-2">Get Started</a>
+          <a href="{{ url_for('scholarships') }}" class="btn btn-outline-light btn-lg rounded-pill px-4 mb-2">Explore Scholarships</a>
         {% endif %}
 
-    </div>
-</section>
+      </div>
 
+      <!-- RIGHT: illustration -->
+      <div class="col-lg-6 text-center">
+        <img src="{{ url_for('static', filename='images/hero-illustration-cartoon.svg') }}"
+             alt="Student celebrating scholarship approval"
+             class="img-fluid hero-img">
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT SECTION -->
 <section class="container py-5">
