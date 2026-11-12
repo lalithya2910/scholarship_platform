@@ -1820,3 +1820,335 @@ input[type="file"].form-control {
 }
 
 
+/* ==========================================
+   SCHOLARSHIP AUTH PAGE - PREMIUM DESIGN
+========================================== */
+
+.auth-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #061b2b;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.auth-outer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px;
+    background: linear-gradient(135deg, #07517a, #061b2b);
+}
+
+.auth-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1500px;
+    min-height: 760px;
+    background: #121416;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* LEFT IMAGE PANEL */
+
+.auth-welcome {
+    position: relative;
+    width: 62%;
+    min-height: 760px;
+    display: flex;
+    align-items: flex-end;
+    padding: 65px;
+
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(47, 72, 180, 0.78),
+            rgba(105, 65, 165, 0.70),
+            rgba(190, 55, 145, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=90");
+
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* OVERLAY */
+
+.auth-welcome-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(15, 12, 55, 0.55),
+        rgba(40, 40, 100, 0.05)
+    );
+    z-index: 1;
+}
+
+/* DECORATIVE CIRCLES */
+
+.auth-decoration {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.decoration-one {
+    width: 400px;
+    height: 400px;
+    top: -230px;
+    right: -150px;
+}
+
+.decoration-two {
+    width: 500px;
+    height: 500px;
+    bottom: -350px;
+    left: -200px;
+}
+
+/* WELCOME CONTENT */
+
+.auth-welcome-content {
+    position: relative;
+    z-index: 3;
+    max-width: 680px;
+    width: 100%;
+    color: white;
+}
+
+.auth-logo {
+    margin-bottom: 35px;
+}
+
+.auth-logo i {
+    font-size: 65px;
+    color: white;
+}
+
+.auth-welcome-content h1 {
+    font-size: clamp(34px, 4vw, 58px);
+    font-weight: 750;
+    line-height: 1.15;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.auth-welcome-content p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.92);
+    max-width: 550px;
+    margin-bottom: 28px;
+}
+
+/* FEATURE PILLS */
+
+.auth-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.auth-features span {
+    padding: 10px 20px;
+    border: 1px solid rgba(255,255,255,0.55);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.auth-features i {
+    margin-right: 7px;
+}
+
+/* TAGLINE */
+
+.auth-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: white;
+    color: #5045a5;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* RIGHT FORM PANEL */
+
+.auth-form-panel {
+    width: 38%;
+    min-height: 760px;
+    padding: 55px 45px;
+    background: #121416;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    color: white;
+}
+
+/* FORM HEADINGS */
+
+.auth-form-panel h1,
+.auth-form-panel h2,
+.auth-form-panel h3 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* FORM TEXT */
+
+.auth-form-panel p,
+.auth-form-panel label {
+    color: #c5c5c5;
+}
+
+/* INPUT FIELDS */
+
+.auth-form-panel .form-control,
+.auth-form-panel .form-select {
+    min-height: 52px;
+    background: #151719;
+    border: 1px solid #454545;
+    border-radius: 5px;
+    color: white;
+    padding: 12px 16px;
+}
+
+.auth-form-panel .form-control::placeholder {
+    color: #a9a9a9;
+}
+
+.auth-form-panel .form-control:focus,
+.auth-form-panel .form-select:focus {
+    background: #181a1c;
+    color: white;
+    border-color: #a65ac2;
+    box-shadow: 0 0 0 3px rgba(150, 75, 180, 0.15);
+}
+
+.auth-form-panel option {
+    background: #151719;
+    color: white;
+}
+
+/* LINKS */
+
+.auth-form-panel a {
+    color: #d17ce5;
+    text-decoration: none;
+}
+
+.auth-form-panel a:hover {
+    color: #f0a4ed;
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+
+.auth-form-panel .btn-primary,
+.auth-form-panel button[type="submit"] {
+    background: linear-gradient(
+        100deg,
+        #4b55bc,
+        #8650b3,
+        #c04b9b
+    );
+    border: none;
+    color: white;
+    min-height: 50px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.auth-form-panel .btn-primary:hover,
+.auth-form-panel button[type="submit"]:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+}
+
+/* CHECKBOX */
+
+.auth-form-panel .form-check-input {
+    background-color: #252525;
+    border-color: #777;
+}
+
+.auth-form-panel .form-check-input:checked {
+    background-color: #8650b3;
+    border-color: #8650b3;
+}
+
+/* FLASH ALERT */
+
+.auth-form-panel .alert {
+    color: #222;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+    .auth-outer {
+        padding: 20px;
+    }
+
+    .auth-welcome {
+        padding: 40px;
+    }
+
+    .auth-form-panel {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .auth-outer {
+        padding: 0;
+    }
+
+    .auth-layout {
+        flex-direction: column;
+        border-radius: 0;
+    }
+
+    .auth-welcome {
+        width: 100%;
+        min-height: 480px;
+        padding: 40px 28px;
+    }
+
+    .auth-form-panel {
+        width: 100%;
+        min-height: auto;
+        padding: 40px 28px;
+    }
+
+    .auth-welcome-content h1 {
+        font-size: 35px;
+    }
+
+    .auth-welcome-content p {
+        font-size: 16px;
+    }
+
+    .auth-logo i {
+        font-size: 50px;
+    }
+}
+
+
+
