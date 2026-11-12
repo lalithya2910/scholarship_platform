@@ -1852,41 +1852,92 @@ input[type="file"].form-control {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-/* LEFT IMAGE PANEL */
+
+/* LEFT PANEL - IMAGE + BLUE PINK GRADIENT */
 
 .auth-welcome {
     position: relative;
     width: 62%;
     min-height: 760px;
+
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: center;
+
     padding: 65px;
+    overflow: hidden;
 
     background-image:
         linear-gradient(
             135deg,
-            rgba(47, 72, 180, 0.78),
-            rgba(105, 65, 165, 0.70),
-            rgba(190, 55, 145, 0.65)
+            rgba(52, 86, 181, 0.72),
+            rgba(85, 80, 168, 0.62),
+            rgba(128, 80, 154, 0.58),
+            rgba(192, 77, 154, 0.65)
         ),
         url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1800&q=90");
 
     background-size: cover;
     background-position: center;
-    overflow: hidden;
+    background-repeat: no-repeat;
 }
 
-/* OVERLAY */
+/* IMAGE OVERLAY */
 
 .auth-welcome-overlay {
     position: absolute;
     inset: 0;
+
     background: linear-gradient(
         to top,
-        rgba(15, 12, 55, 0.55),
-        rgba(40, 40, 100, 0.05)
+        rgba(35, 35, 110, 0.25),
+        transparent
     );
+
     z-index: 1;
+}
+
+/* DECORATIVE CIRCLES */
+
+.auth-decoration {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.decoration-one {
+    width: 400px;
+    height: 400px;
+    top: -230px;
+    right: -150px;
+}
+
+.decoration-two {
+    width: 500px;
+    height: 500px;
+    bottom: -350px;
+    left: -200px;
+}
+
+/* WELCOME CONTENT */
+
+.auth-welcome-content {
+    position: relative;
+    z-index: 3;
+    max-width: 680px;
+    width: 100%;
+    color: white;
+}
+
+.auth-welcome-content h1,
+.auth-welcome-content p {
+    color: white;
+}
+
+.auth-logo i {
+    font-size: 75px;
+    color: white;
 }
 
 /* DECORATIVE CIRCLES */
