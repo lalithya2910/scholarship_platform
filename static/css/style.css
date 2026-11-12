@@ -633,31 +633,16 @@ input[type="file"].form-control {
 /* LEFT IMAGE PANEL */
 
 .auth-welcome {
-    flex: 0 0 62%;
-    width: 62%;
-    min-height: 760px;
-
     background-image:
         linear-gradient(
-            rgba(30, 20, 70, 0.55),
-            rgba(30, 20, 70, 0.65)
+            rgba(30, 20, 70, 0.15),
+            rgba(30, 20, 70, 0.20)
         ),
         url("/static/Graduates%20Celebrating%20Under%20Colorful%20Skies.png");
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-    text-align: center;
-    padding: 50px;
-    position: relative;
-    overflow: hidden;
 }
 .auth-welcome-overlay {
     position: absolute;
