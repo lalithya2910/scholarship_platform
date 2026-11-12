@@ -927,84 +927,6 @@ a {
     text-decoration: none;
 }
 
-/* =========================================
-   2. NAVBAR
-========================================= */
-
-header {
-    width: 100%;
-}
-
-.navbar {
-    min-height: 72px;
-    padding: 12px 0;
-
-    background: linear-gradient(
-        110deg,
-        #061b42,
-        #075477
-    );
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-
-    color: #ffffff !important;
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-}
-
-.navbar-brand i {
-    color: #a8c9ff;
-    font-size: 25px;
-}
-
-.navbar-nav {
-    gap: 8px;
-}
-
-.navbar .nav-link {
-    display: flex;
-    align-items: center;
-
-    padding: 11px 15px !important;
-
-    color: #e6edff !important;
-    font-size: 14px;
-    font-weight: 600;
-
-    border-radius: 7px;
-    transition: 0.3s ease;
-}
-
-.navbar .nav-link i {
-    font-size: 16px;
-}
-
-.navbar .nav-link:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.14);
-}
-
-.navbar .nav-link.active {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.18);
-}
-
-/* Navbar Toggler */
-
-.navbar-toggler {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 7px 10px;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
-}
 
 /* =========================================
    3. MAIN CONTENT
@@ -1051,25 +973,6 @@ header {
     color: #1764a3;
 }
 
-/* =========================================
-   5. FOOTER
-========================================= */
-
-.footer {
-    width: 100%;
-    padding: 23px 15px;
-
-    background: #061b42;
-    color: #ffffff;
-
-    margin-top: auto;
-}
-
-.footer p {
-    color: #d6e1f5;
-    font-size: 13px;
-    line-height: 1.6;
-}
 
 /* =========================================
    6. AUTH MAIN
