@@ -491,6 +491,11 @@ def dashboard():
         session.clear()
         return redirect(url_for('login'))
 
+    recent_applications = (Application.query
+                       .filter_by(student_id=session['student_id'])
+                       .order_by(Application.application_date.desc())
+                       .limit(5).all())
+
     return render_template(
         'dashboard.html',
         student=student,
