@@ -28,7 +28,7 @@
                 </h2>
 
                 <p class="mb-0" style="color: #f0efff;">
-                    Allocate scholarship funds to approved student applications.
+                    Allocate scholarship funds to approved student applications securely.
                 </p>
             </div>
 
@@ -63,9 +63,7 @@
                     </h5>
 
                     <p class="text-secondary mb-0">
-                        Enter an allocation amount within the available scholarship
-                        balance and maximum per-student limit. Verify the amount
-                        before submitting.
+                        Enter an allocation amount within the available scholarship balance and maximum per-student limit. Verify details before submitting.
                     </p>
                 </div>
 
@@ -163,141 +161,104 @@
 
                         <!-- Application ID -->
                         <td class="px-3 py-4">
-
                             <span class="badge rounded-pill px-3 py-2"
                                   style="background-color: #eaf0ff;
                                          color: #0250c5; font-weight: 700;">
                                 #{{ application.application_id }}
                             </span>
-
                         </td>
 
 
                         <!-- Student Name -->
                         <td class="px-3 py-4">
-
                             <div class="d-flex align-items-center gap-2">
-
                                 <div class="d-flex align-items-center justify-content-center
                                             rounded-circle text-white flex-shrink-0"
                                      style="width: 40px; height: 40px;
                                             background: linear-gradient(135deg, #0250c5, #d43f8d);">
-
                                     <i class="bi bi-person-fill"></i>
-
                                 </div>
-
                                 <span class="fw-semibold text-nowrap"
                                       style="color: #263247;">
                                     {{ application.student_name }}
                                 </span>
-
                             </div>
-
                         </td>
 
 
                         <!-- Scholarship Name -->
                         <td class="px-3 py-4">
-
                             <span class="fw-semibold"
                                   style="color: #344054; min-width: 150px; display: inline-block;">
                                 {{ application.scholarship_name }}
                             </span>
-
                         </td>
 
 
                         <!-- Available Funds -->
                         <td class="px-3 py-4 text-nowrap">
-
-                            <span class="fw-bold"
-                                  style="color: #14804a;">
+                            <span class="fw-bold" style="color: #14804a;">
                                 ₹{{ "{:,.2f}".format(application.available_amount) }}
                             </span>
-
                         </td>
 
 
                         <!-- Maximum Per Student -->
                         <td class="px-3 py-4 text-nowrap">
-
                             {% if application.max_amount_per_student is not none %}
-
-                                <span class="fw-semibold"
-                                      style="color: #5145b5;">
+                                <span class="fw-semibold" style="color: #5145b5;">
                                     ₹{{ "{:,.2f}".format(application.max_amount_per_student) }}
                                 </span>
-
                             {% else %}
-
-                                <span class="text-secondary small">
-                                    No limit set
-                                </span>
-
+                                <span class="text-secondary small">No limit set</span>
                             {% endif %}
-
                         </td>
 
 
                         <!-- Allocation Form -->
                         <td class="px-3 py-4">
-
                             <form method="POST"
                                   action="{{ url_for('fund_allocation') }}"
-                                  id="allocation-{{ application.application_id }}">
+                                  id="allocation-form-{{ application.application_id }}">
 
                                 <input type="hidden"
                                        name="application_id"
                                        value="{{ application.application_id }}">
 
-                                <div class="input-group"
-                                     style="min-width: 170px;">
-
+                                <div class="input-group" style="min-width: 170px;">
                                     <span class="input-group-text fw-semibold"
-                                          style="background-color: #f3f5fb;
-                                                 border-color: #d9e0ec;
-                                                 color: #5145b5;">
+                                          style="background-color: #f3f5fb; border-color: #d9e0ec; color: #5145b5;">
                                         ₹
                                     </span>
 
                                     <input type="number"
                                            class="form-control"
+                                           id="input-{{ application.application_id }}"
                                            name="allocated_amount"
                                            min="0.01"
                                            max="{{ [application.available_amount, application.max_amount_per_student if application.max_amount_per_student is not none else application.available_amount]|min }}"
                                            step="0.01"
                                            placeholder="Enter amount"
-                                           aria-label="Allocated amount"
-                                           style="min-width: 115px;
-                                                  border-color: #d9e0ec;"
+                                           style="border-color: #d9e0ec;"
                                            required>
-
                                 </div>
 
                                 <small class="text-secondary d-block mt-2">
                                     Enter amount in rupees
                                 </small>
-
                             </form>
-
                         </td>
 
 
-                        <!-- Allocate Button -->
+                        <!-- Allocate Button (Triggers Confirmation Modal) -->
                         <td class="px-3 py-4 text-center">
-
-                            <button type="submit"
-                                    form="allocation-{{ application.application_id }}"
+                            <button type="button"
                                     class="btn text-white rounded-3 fw-semibold text-nowrap px-3 py-2"
-                                    style="background: linear-gradient(110deg, #0250c5, #5145b5, #d43f8d);
-                                           border: none; font-size: 13px;">
-
+                                    style="background: linear-gradient(110deg, #0250c5, #5145b5, #d43f8d); border: none; font-size: 13px;"
+                                    onclick="openConfirmModal('{{ application.application_id }}', '{{ application.student_name }}', '{{ application.scholarship_name }}')">
                                 <i class="bi bi-check-circle me-1"></i>
                                 Allocate Funds
-
                             </button>
-
                         </td>
 
                     </tr>
@@ -314,17 +275,9 @@
 
     <!-- Important Note -->
     <div class="alert border-0 rounded-3 mt-4 mb-0"
-         style="background-color: #edf5ff;
-                color: #345477;
-                border-left: 4px solid #0250c5 !important;">
-
-        <i class="bi bi-lightbulb-fill me-2"
-           style="color: #0250c5;"></i>
-
-        <strong>Important:</strong>
-        The allocation amount must not exceed the available scholarship funds
-        or the maximum amount allowed per student.
-
+         style="background-color: #edf5ff; color: #345477; border-left: 4px solid #0250c5 !important;">
+        <i class="bi bi-lightbulb-fill me-2" style="color: #0250c5;"></i>
+        <strong>Important:</strong> The allocation amount must not exceed the available scholarship funds or the maximum amount allowed per student.
     </div>
 
 
@@ -333,41 +286,90 @@
     <!-- Empty State -->
     <div class="card border-0 rounded-4 text-center py-5 px-3"
          style="box-shadow: 0 8px 28px rgba(36,50,74,0.07);">
-
-        <div class="d-flex align-items-center justify-content-center
-                    rounded-circle mx-auto mb-4"
-             style="width: 90px; height: 90px;
-                    background: linear-gradient(135deg, #eaf0ff, #fce8f2);
-                    color: #5145b5;">
-
+        <div class="d-flex align-items-center justify-content-center rounded-circle mx-auto mb-4"
+             style="width: 90px; height: 90px; background: linear-gradient(135deg, #eaf0ff, #fce8f2); color: #5145b5;">
             <i class="bi bi-wallet2" style="font-size: 2.8rem;"></i>
-
         </div>
-
-        <h4 class="fw-bold mb-2" style="color: #24324a;">
-            No Applications Available
-        </h4>
-
-        <p class="text-secondary mb-0">
-            No approved applications are awaiting fund allocation.
-        </p>
-
+        <h4 class="fw-bold mb-2" style="color: #24324a;">No Applications Available</h4>
+        <p class="text-secondary mb-0">No approved applications are awaiting fund allocation.</p>
         <div class="mt-4">
             <a href="{{ url_for('admin_dashboard') }}"
                class="btn text-white rounded-3 px-4 py-2 fw-semibold"
-               style="background: linear-gradient(110deg, #0250c5, #d43f8d);
-                      border: none;">
-
-                <i class="bi bi-speedometer2 me-2"></i>
-                Back to Dashboard
-
+               style="background: linear-gradient(110deg, #0250c5, #d43f8d); border: none;">
+                <i class="bi bi-speedometer2 me-2"></i> Back to Dashboard
             </a>
         </div>
-
     </div>
 
     {% endif %}
 
 </div>
+
+
+<!-- Confirmation Modal (Bootstrap 5) -->
+<div class="modal fade" id="confirmAllocationModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow">
+            <div class="modal-header border-0 pb-0 pt-4 px-4">
+                <h5 class="modal-title fw-bold" id="confirmModalLabel" style="color: #24324a;">
+                    <i class="bi bi-shield-check text-primary me-2"></i> Confirm Fund Allocation
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-3">
+                <p class="text-secondary mb-2">You are about to allocate funds for:</p>
+                <div class="p-3 rounded-3 bg-light mb-3">
+                    <div class="mb-1"><strong>Student:</strong> <span id="modal-student-name" class="text-primary"></span></div>
+                    <div class="mb-1"><strong>Scholarship:</strong> <span id="modal-scholarship-name"></span></div>
+                    <div><strong>Amount:</strong> ₹<span id="modal-amount-val" class="fw-bold text-success"></span></div>
+                </div>
+                <p class="small text-muted mb-0">Please verify the amount before final submission.</p>
+            </div>
+            <div class="modal-footer border-0 px-4 pb-4">
+                <button type="button" class="btn btn-light rounded-3 px-3 py-2 fw-semibold" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn text-white rounded-3 px-4 py-2 fw-semibold" 
+                        style="background: linear-gradient(110deg, #0250c5, #d43f8d); border: none;"
+                        id="confirmSubmitBtn" onclick="submitAllocationForm()">
+                    Yes, Allocate Funds
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript for Confirmation Modal & Loading Spinner -->
+<script>
+    let activeAppId = null;
+
+    function openConfirmModal(appId, studentName, scholarshipName) {
+        const inputField = document.getElementById(`input-${appId}`);
+        const val = inputField.value;
+
+        if (!val || parseFloat(val) <= 0) {
+            alert('దయచేసి సరైన అమౌంట్ (Valid Amount) ఎంటర్ చేయండి.');
+            inputField.focus();
+            return;
+        }
+
+        activeAppId = appId;
+        document.getElementById('modal-student-name').textContent = studentName;
+        document.getElementById('modal-scholarship-name').textContent = scholarshipName;
+        document.getElementById('modal-amount-val').textContent = parseFloat(val).toLocaleString('en-IN', {minimumFractionDigits: 2});
+
+        const myModal = new bootstrap.Modal(document.getElementById('confirmAllocationModal'));
+        myModal.show();
+    }
+
+    function submitAllocationForm() {
+        if (!activeAppId) return;
+
+        const btn = document.getElementById('confirmSubmitBtn');
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Processing...`;
+
+        document.getElementById(`allocation-form-${activeAppId}`).submit();
+    }
+</script>
 
 {% endblock %}
