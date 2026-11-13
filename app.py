@@ -91,7 +91,7 @@ def login():
 
                 flash("Login successful!", "success")
 
-                return redirect(url_for("dashboard"))
+                return redirect(url_for("index"))
 
             else:
                 flash("Invalid email or password.", "error")
@@ -966,7 +966,7 @@ def admin_login():
             session['admin_name'] = admin['name']
 
             flash('Admin login successful!', 'success')
-            return redirect(url_for('admin_dashboard'))
+            return redirect(url_for('index'))
 
         flash('Invalid email or password!', 'danger')
 
